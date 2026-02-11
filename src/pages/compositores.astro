@@ -15,11 +15,10 @@ const musicos = [
     `,
     galeria: [
       "/images/edino.jpg",
-      // Adicione mais fotos aqui se tiver: "/images/edino-jovem.jpg"
     ]
   },
   {
-    id: "outro-compositor",
+    id: "corgi",
     nome: "Corgi",
     foto: "/images/corgi.jpg", // Imagem temporária
     bio: `
@@ -32,6 +31,10 @@ const musicos = [
   },
   // Copie e cole o bloco acima para adicionar mais pessoas
 ];
+
+// --- ORDENAÇÃO AUTOMÁTICA (A a Z) ---
+// Esta linha organiza a lista automaticamente antes de mostrar na tela
+musicos.sort((a, b) => a.nome.localeCompare(b.nome));
 ---
 
 <Layout title="Compositores | Violão Catarinense">
@@ -44,13 +47,14 @@ const musicos = [
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {musicos.map((musico) => (
-                <div class="group cursor-pointer" onclick={`abrirModal('${musico.id}')`}>
+                <div class="group cursor-pointer transform transition-all hover:-translate-y-2" onclick={`abrirModal('${musico.id}')`}>
                     
-                    <div class="overflow-hidden rounded-xl shadow-md aspect-[3/4] mb-4 relative">
+                    <div class="overflow-hidden rounded-xl shadow-md aspect-[3/4] mb-4 relative bg-gray-100">
                         <img 
                             src={musico.foto} 
                             alt={musico.nome} 
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            loading="lazy"
                         />
                         <div class="absolute inset-0 bg-rose-900/0 group-hover:bg-rose-900/20 transition-colors duration-300"></div>
                     </div>
@@ -64,7 +68,7 @@ const musicos = [
                         <span class="data-nome">{musico.nome}</span>
                         <span class="data-foto">{musico.foto}</span>
                         <div class="data-bio flex flex-col gap-2 text-justify" set:html={musico.bio}></div>
-                        </div>
+                    </div>
 
                 </div>
             ))}
@@ -122,6 +126,9 @@ const musicos = [
     window.abrirModal = (id) => {
         // 1. Busca os dados escondidos no card que foi clicado
         const dataDiv = document.getElementById(`data-${id}`);
+        // Segurança: se não achar, para aqui
+        if (!dataDiv) return;
+
         const nome = dataDiv.querySelector('.data-nome').innerText;
         const foto = dataDiv.querySelector('.data-foto').innerText;
         const bioHtml = dataDiv.querySelector('.data-bio').innerHTML;
@@ -164,3 +171,11 @@ const musicos = [
             fecharModal();
         }
     });
+
+    // Fechar com ESC (Melhoria de usabilidade)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modalOverlay.classList.contains('hidden')) {
+            fecharModal();
+        }
+    });
+</script>
