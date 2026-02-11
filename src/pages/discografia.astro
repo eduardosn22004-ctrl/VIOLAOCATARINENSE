@@ -1,9 +1,229 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// --- BANCO DE DADOS DA DISCOGRAFIA ---
+const discografia = [
+  {
+    nome: "Andrei Uller",
+    albuns: [
+      {
+        id: "violaocat1", // ID único para o sistema achar
+        titulo: "Violão Catarinense",
+        ano: "2012",
+        capa: "/images/capa_violaocat1.jpg", // Certifique-se de ter essa imagem ou use um placeholder
+        faixas: [
+          "testeI",
+          "teste II",
+          "Variações sobre um teste",
+          "testeeeee"
+        ]
+      },
+      {
+        id: "violaocat2",
+        titulo: "Violão Catarinense - Volume 2",
+        ano: "2019",
+        capa: "/images/capa_violaocat2.jpg",
+        faixas: [
+          " I",
+          "II",
+          "III"
+        ]
+      }
+    ]
+  },
+  {
+    nome: "Joel Colman",
+    albuns: [
+      {
+        id: "terraguar",
+        titulo: "Terraguar",
+        ano: "1000",
+        capa: "/images/terraguar.jpg",
+        faixas: [
+          "exemplo",
+        ]
+      }
+    ]
+  },
+  {
+    nome: "Darcy Villa Verde",
+    albuns: [
+      {
+        id: "darcy-completo",
+        titulo: "Darcy Villa Verde- Disco Compacto",
+        ano: "1962",
+        capa: "/images/darcycompacto.jpg",
+        faixas: [
+          "teste",
+          "darcy",
+          "música legal",
+          "música muito legal"
+        ]
+      }
+    ]
+  }
+];
+
+// --- ORDENAÇÃO AUTOMÁTICA (A-Z por Nome do Artista) ---
+discografia.sort((a, b) => a.nome.localeCompare(b.nome));
 ---
 
-<Layout title="Violão Catarinense">
-    </Layout>
+<Layout title="Discografia | Violão Catarinense">
+    
+    <div class="max-w-5xl mx-auto py-12 px-6">
+        
+        <h1 class="text-4xl font-bold text-center mb-16 text-gray-900">
+            Discografia
+        </h1>
 
+        <div class="space-y-16">
+            {discografia.map((artista) => (
+                <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    
+                    <h2 class="text-3xl font-bold text-rose-900 mb-6 border-b border-rose-100 pb-2">
+                        {artista.nome}
+                    </h2>
 
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {artista.albuns.map((album) => (
+                            <button 
+                                onclick={`abrirAlbum('${album.id}', '${artista.nome}')`}
+                                class="group flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-rose-50 transition-all duration-300 border border-transparent hover:border-rose-200 text-left"
+                            >
+                                <div class="w-16 h-16 shrink-0 rounded-md overflow-hidden shadow-sm bg-gray-200">
+                                    <img src={album.capa} alt="Capa" class="w-full h-full object-cover opacity-90 group-hover:opacity-100" />
+                                </div>
+                                
+                                <div>
+                                    <h3 class="font-bold text-gray-800 group-hover:text-rose-800 text-lg leading-tight">
+                                        {album.titulo}
+                                    </h3>
+                                    <p class="text-sm text-gray-500 mt-1">{album.ano}</p>
+                                </div>
 
+                                <div id={`data-${album.id}`} class="hidden">
+                                    <span class="data-titulo">{album.titulo}</span>
+                                    <span class="data-ano">{album.ano}</span>
+                                    <span class="data-capa">{album.capa}</span>
+                                    <span class="data-faixas">{JSON.stringify(album.faixas)}</span>
+                                </div>
+                            </button>
+                        ))}
+                    </div>
+                </section>
+            ))}
+        </div>
+
+    </div>
+
+    <div id="modal-overlay" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        
+        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl relative transform scale-95 transition-transform duration-300" id="modal-content">
+            
+            <button onclick="fecharModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-rose-100 text-gray-800 hover:text-rose-700 rounded-full p-2 transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                
+                <div class="bg-gray-100 p-8 flex items-center justify-center">
+                    <img id="modal-capa" src="" alt="Capa do Álbum" class="w-full max-w-sm rounded shadow-xl object-cover" />
+                </div>
+
+                <div class="p-8 md:p-10">
+                    <p id="modal-autor" class="text-sm font-bold tracking-widest text-rose-600 uppercase mb-2">
+                        Nome do Autor
+                    </p>
+                    
+                    <h2 id="modal-titulo" class="text-3xl font-bold text-gray-900 mb-2 leading-tight">
+                        Título do Álbum
+                    </h2>
+                    
+                    <p class="text-gray-500 mb-8 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Lançamento: <span id="modal-ano"></span>
+                    </p>
+
+                    <div class="border-t border-gray-100 pt-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Faixas</h3>
+                        <ol id="modal-faixas" class="list-decimal list-inside space-y-2 text-gray-700 font-medium"></ol>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</Layout>
+
+<script is:inline>
+    const overlay = document.getElementById('modal-overlay');
+    const content = document.getElementById('modal-content');
+    
+    // Campos do Modal
+    const mTitulo = document.getElementById('modal-titulo');
+    const mAutor = document.getElementById('modal-autor');
+    const mAno = document.getElementById('modal-ano');
+    const mCapa = document.getElementById('modal-capa');
+    const mFaixas = document.getElementById('modal-faixas');
+
+    window.abrirAlbum = (id, nomeAutor) => {
+        // 1. Busca os dados escondidos
+        const dataDiv = document.getElementById(`data-${id}`);
+        if (!dataDiv) return;
+
+        const titulo = dataDiv.querySelector('.data-titulo').innerText;
+        const ano = dataDiv.querySelector('.data-ano').innerText;
+        const capa = dataDiv.querySelector('.data-capa').innerText;
+        // Converte o texto JSON de volta para Array
+        const faixas = JSON.parse(dataDiv.querySelector('.data-faixas').innerText);
+
+        // 2. Preenche o Modal
+        mTitulo.innerText = titulo;
+        mAutor.innerText = nomeAutor;
+        mAno.innerText = ano;
+        mCapa.src = capa;
+
+        // 3. Cria a lista de faixas (Limpa a anterior primeiro)
+        mFaixas.innerHTML = ''; 
+        faixas.forEach(faixa => {
+            const li = document.createElement('li');
+            li.innerText = faixa;
+            li.className = "pl-2 hover:text-rose-700 transition-colors";
+            mFaixas.appendChild(li);
+        });
+
+        // 4. Mostra o Modal
+        overlay.classList.remove('hidden');
+        setTimeout(() => {
+            overlay.classList.remove('opacity-0');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    window.fecharModal = () => {
+        overlay.classList.add('opacity-0');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+        setTimeout(() => {
+            overlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+
+    // Fechar clicando fora
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) fecharModal();
+    });
+
+    // Fechar com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !overlay.classList.contains('hidden')) fecharModal();
+    });
+</script>
