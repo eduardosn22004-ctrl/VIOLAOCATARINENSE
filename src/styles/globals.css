@@ -17,12 +17,11 @@
 }
 
 @layer base {
-    /* 2. APLICAÇÃO DA OPÇÃO 1 (CREME ENVELHECIDO) 
-       - bg-orange-50: Traz o tom de papel antigo/madeira clara.
-       - text-stone-900: Texto quase preto, mas com base terrosa (não cinza azulado).
-    */
-    body {
-        @apply bg-orange-50 text-stone-900 antialiased;
+    /* Aplicamos em HTML e BODY para garantir que a tela inteira pegue a cor */
+    html, body {
+        background-color: #fff7ed; /* Cor exata do orange-50 (Creme) */
+        color: #1c1917;            /* Cor exata do stone-900 (Marrom escuro) */
+        @apply min-h-screen antialiased; /* Garante altura mínima de 100% da tela */
     }
 
     h1 {
@@ -30,7 +29,6 @@
     }
 
     h2 {
-        /* Mantive o vermelho escuro nos subtítulos, pois combina muito com o fundo creme */
         @apply font-serif text-2xl font-bold sm:text-3xl text-red-900/80;
     }
 
