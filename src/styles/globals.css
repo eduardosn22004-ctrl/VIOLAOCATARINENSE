@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
+    /* 1. Fonte Cinzel mantida para os títulos */
+    --font-serif: 'Cinzel', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --color-primary: #f67280;
     --color-primary-content: #f5e3c9;
@@ -14,12 +17,21 @@
 }
 
 @layer base {
+    /* 2. APLICAÇÃO DA OPÇÃO 1 (CREME ENVELHECIDO) 
+       - bg-orange-50: Traz o tom de papel antigo/madeira clara.
+       - text-stone-900: Texto quase preto, mas com base terrosa (não cinza azulado).
+    */
+    body {
+        @apply bg-orange-50 text-stone-900 antialiased;
+    }
+
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply font-serif text-4xl font-bold tracking-tight sm:text-5xl;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        /* Mantive o vermelho escuro nos subtítulos, pois combina muito com o fundo creme */
+        @apply font-serif text-2xl font-bold sm:text-3xl text-red-900/80;
     }
 
     a:not(.btn) {
