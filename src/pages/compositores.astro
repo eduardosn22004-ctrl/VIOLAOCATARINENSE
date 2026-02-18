@@ -7,7 +7,7 @@ const musicos = [
     id: "edino-krieger",
     nome: "Edino Krieger",
     foto: "/images/pessoas/edino1.avif",
-    bio: `
+     bio: `
       <p>Nascido em Brusque (SC), a 17 de março de 1928.  Iniciou aos 7 anos estudos de violino com seu pai, Aldo Krieger, violinista, 
       compositor, regente e fundador do Conservatório de Música local. Realizou recitais de violino em diversas cidades a partir dos 9 anos 
       e aos 15 transferiu-se para o Rio de Janeiro, com bolsa de estudos do governo do estado, para prosseguir seus estudos no 
@@ -93,9 +93,7 @@ const musicos = [
     id: "corgi",
     nome: "Corgi",
     foto: "/images/corgi.jpg",
-    bio: `
-      <p>Aqui vai a biografia detalhada do segundo compositor.</p>
-    `,
+    bio: `<p>Biografia do segundo compositor aqui...</p>`,
     galeria: ["/images/corgi.jpg", "/images/logo.png"]
   }
 ];
@@ -107,21 +105,17 @@ musicos.sort((a, b) => a.nome.localeCompare(b.nome));
     
     <div class="text-center pt-11 mb-16">
         <h1 class="text-4xl font-bold text-red-700 mb-4">Compositores e Violonistas</h1>
-        <p class="text-xl mb-16 text-stone-800 font-normal px-4">
-            Para conhecer os compositores e violonistas de Santa Catarina, acesse a lista abaixo.
-        </p>
+        <p class="text-xl mb-16 text-stone-800 font-normal px-4">Conheça os artistas que contribuem para o repertório violonístico catarinense.</p>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
             {musicos.map((musico) => (
                 <div class="group cursor-pointer transform transition-all hover:-translate-y-2" onclick={`abrirModal('${musico.id}')`}>
-                    <div class="overflow-hidden rounded-full shadow-lg aspect-square mb-4 relative bg-gray-100 border-4 border-white max-w-[200px] mx-auto">
+                    <div class="overflow-hidden rounded-full shadow-lg aspect-square mb-4 relative bg-gray-100 border-4 border-white max-w-[180px] mx-auto">
                         <img src={musico.foto} alt={musico.nome} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                        <div class="absolute inset-0 bg-rose-900/0 group-hover:bg-rose-900/20 transition-colors duration-300"></div>
                     </div>
                     <h3 class="text-xl font-bold text-center text-gray-800 group-hover:text-rose-700 transition-colors">{musico.nome}</h3>
-                    <p class="text-sm text-center text-gray-500 mt-1">Clique para conhecer</p>
-
-                    <div id={`data-${musico.id}`} class="hidden" data-nome={musico.nome} data-galeria={JSON.stringify(musico.galeria)}>
+                    
+                    <div id={`data-${musico.id}`} class="hidden" data-nome={musico.nome} data-foto={musico.foto} data-galeria={JSON.stringify(musico.galeria)}>
                         <div class="data-bio" set:html={musico.bio}></div>
                     </div>
                 </div>
@@ -129,37 +123,49 @@ musicos.sort((a, b) => a.nome.localeCompare(b.nome));
         </div>
     </div>
 
-    <div id="modal-overlay" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 md:p-6 opacity-0 transition-opacity duration-300">
+    <div id="modal-overlay" class="fixed inset-0 z-50 hidden bg-black/30 backdrop-blur-sm flex items-center justify-center p-2 md:p-6 opacity-0 transition-opacity duration-300">
         
-        <div class="bg-white rounded-2xl w-full max-w-6xl h-[95vh] md:h-[85vh] overflow-hidden shadow-2xl relative transform scale-95 transition-transform duration-300 flex flex-col md:flex-row" id="modal-content">
+        <div class="bg-white rounded-3xl w-full max-w-5xl max-h-[92vh] overflow-y-auto shadow-2xl relative transform scale-95 transition-transform duration-300 custom-scrollbar" id="modal-content">
             
-            <button onclick="fecharModal()" class="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 transition-colors z-30 shadow-md border border-gray-200">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5"><path d="M6 18L18 6M6 6l12 12" /></svg>
+            <button onclick="fecharModal()" class="absolute top-6 right-6 bg-white/10 hover:bg-white/20 text-white rounded-full p-2.5 transition-colors z-30 border border-white/20">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
 
-            <div class="w-full md:w-1/2 bg-stone-200 relative group/gallery border-b md:border-b-0 md:border-r border-gray-200">
-                <div class="absolute inset-0 flex items-center justify-center p-6">
-                    <img id="modal-img" src="" alt="" class="max-w-full max-h-full w-auto h-auto object-contain shadow-lg bg-white transition-opacity duration-300 ease-in-out opacity-100" />
+            <div class="p-8 md:p-14 flex flex-col md:flex-row items-center gap-10 bg-stone-400">
+                <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-8 border-stone-400 shadow-2xl flex-shrink-0">
+                    <img id="modal-header-img" src="" alt="" class="w-full h-full object-cover" />
                 </div>
                 
-                <div id="nav-buttons" class="absolute inset-0 flex items-center justify-between px-4 pointer-events-none z-10">
-                    <button onclick="mudarFoto(-1)" class="pointer-events-auto p-3 rounded-full bg-black/30 hover:bg-black/60 text-white transition-all opacity-0 group-hover/gallery:opacity-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path d="M15 19l-7-7 7-7" /></svg>
-                    </button>
-                    <button onclick="mudarFoto(1)" class="pointer-events-auto p-3 rounded-full bg-black/30 hover:bg-black/60 text-white transition-all opacity-0 group-hover/gallery:opacity-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path d="M9 5l7 7-7 7" /></svg>
-                    </button>
-                </div>
-
-                <div id="gallery-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-1.5 rounded-full text-[11px] uppercase tracking-tighter font-bold z-10">
-                    1 / 1
+                <div class="text-center md:text-left">
+                    <h2 id="modal-title" class="text-4xl md:text-6xl font-black text-red-800 leading-none tracking-tighter"></h2>
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 flex flex-col bg-white overflow-hidden">
-                <div class="p-8 md:p-12 overflow-y-auto custom-scrollbar h-full">
-                    <h2 id="modal-title" class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-rose-600 pb-4 inline-block"></h2>
-                    <div id="modal-bio" class="text-sm md:text-base text-gray-700 leading-relaxed space-y-5 text-justify pr-4"></div>
+            <div class="p-8 md:p-14">
+                <div id="modal-bio" class="text-base text-gray-700 leading-relaxed space-y-6 text-justify">
+                    </div>
+            </div>
+
+            <div id="gallery-section" class="bg-stone-100 p-8 md:p-14 border-t border-gray-100">
+                <h3 class="text-center text-gray-400 uppercase tracking-[0.3em] text-xs font-black mb-10">Galeria de Imagens</h3>
+                
+                <div class="relative max-w-4xl mx-auto group/gallery">
+                    <div class="aspect-video bg-stone-300 rounded-3xl overflow-hidden shadow-inner flex items-center justify-center relative border-8 border-white">
+                        <img id="modal-gallery-img" src="" alt="" class="max-w-full max-h-full object-contain transition-opacity duration-300 opacity-100" />
+                    </div>
+
+                    <div class="absolute inset-0 flex items-center justify-between px-6 pointer-events-none">
+                        <button onclick="mudarFoto(-1)" class="pointer-events-auto p-4 rounded-full bg-white/95 hover:bg-red-700 hover:text-white text-red-700 shadow-2xl transition-all opacity-0 group-hover/gallery:opacity-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-8 h-8"><path d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button onclick="mudarFoto(1)" class="pointer-events-auto p-4 rounded-full bg-white/95 hover:bg-red-700 hover:text-white text-red-700 shadow-2xl transition-all opacity-0 group-hover/gallery:opacity-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-8 h-8"><path d="M9 5l7 7-7 7" /></svg>
+                        </button>
+                    </div>
+
+                    <div id="gallery-counter" class="text-center mt-8 text-sm font-black text-gray-400 tracking-widest">
+                        1 / 1
+                    </div>
                 </div>
             </div>
         </div>
@@ -167,10 +173,10 @@ musicos.sort((a, b) => a.nome.localeCompare(b.nome));
 </Layout>
 
 <style>
-    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #f8f8f8; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #be123c; border-radius: 10px; }
-    body.modal-open { overflow: hidden; padding-right: 5px; }
+    .custom-scrollbar::-webkit-scrollbar { width: 10px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #b91c1c; border-radius: 10px; }
+    body.modal-open { overflow: hidden; }
 </style>
 
 <script is:inline>
@@ -180,9 +186,10 @@ musicos.sort((a, b) => a.nome.localeCompare(b.nome));
     const modalOverlay = document.getElementById('modal-overlay');
     const modalContent = document.getElementById('modal-content');
     const modalTitle = document.getElementById('modal-title');
-    const modalImg = document.getElementById('modal-img');
+    const headerImg = document.getElementById('modal-header-img');
+    const galleryImg = document.getElementById('modal-gallery-img');
     const modalBio = document.getElementById('modal-bio');
-    const navButtons = document.getElementById('nav-buttons');
+    const gallerySection = document.getElementById('gallery-section');
     const galleryCounter = document.getElementById('gallery-counter');
 
     window.abrirModal = (id) => {
@@ -191,18 +198,13 @@ musicos.sort((a, b) => a.nome.localeCompare(b.nome));
 
         galeriaAtual = JSON.parse(dataDiv.getAttribute('data-galeria'));
         indiceAtual = 0;
-        
+
         modalTitle.innerText = dataDiv.getAttribute('data-nome');
+        headerImg.src = dataDiv.getAttribute('data-foto');
         modalBio.innerHTML = dataDiv.querySelector('.data-bio').innerHTML;
         
-        // Reset de opacidade e carga inicial
-        modalImg.style.opacity = '0';
-        modalImg.src = galeriaAtual[0];
-        modalImg.onload = () => modalImg.style.opacity = '1';
-
-        galleryCounter.innerText = `1 / ${galeriaAtual.length}`;
-        navButtons.style.display = galeriaAtual.length > 1 ? 'flex' : 'none';
-        galleryCounter.style.display = galeriaAtual.length > 1 ? 'block' : 'none';
+        gallerySection.style.display = galeriaAtual.length > 0 ? 'block' : 'none';
+        atualizarGaleria();
 
         modalOverlay.classList.remove('hidden');
         document.body.classList.add('modal-open');
@@ -215,21 +217,17 @@ musicos.sort((a, b) => a.nome.localeCompare(b.nome));
     }
 
     window.mudarFoto = (direcao) => {
-        if (galeriaAtual.length <= 1) return;
-
-        // Inicia o Fade Out
-        modalImg.style.opacity = '0';
-
+        galleryImg.style.opacity = '0';
         setTimeout(() => {
             indiceAtual = (indiceAtual + direcao + galeriaAtual.length) % galeriaAtual.length;
-            modalImg.src = galeriaAtual[indiceAtual];
-            galleryCounter.innerText = `${indiceAtual + 1} / ${galeriaAtual.length}`;
-            
-            // Quando a nova imagem carregar, faz o Fade In
-            modalImg.onload = () => {
-                modalImg.style.opacity = '1';
-            };
-        }, 250); // Tempo sincronizado com a duração da transição CSS (300ms)
+            atualizarGaleria();
+            galleryImg.onload = () => galleryImg.style.opacity = '1';
+        }, 200);
+    }
+
+    function atualizarGaleria() {
+        galleryImg.src = galeriaAtual[indiceAtual];
+        galleryCounter.innerText = `${indiceAtual + 1} / ${galeriaAtual.length}`;
     }
 
     window.fecharModal = () => {
@@ -245,7 +243,7 @@ musicos.sort((a, b) => a.nome.localeCompare(b.nome));
     modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) fecharModal(); });
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && !modalOverlay.classList.contains('hidden')) fecharModal();
-        if (e.key === 'ArrowRight') mudarFoto(1);
-        if (e.key === 'ArrowLeft') mudarFoto(-1);
+        if (e.key === 'ArrowRight' && galeriaAtual.length > 1) mudarFoto(1);
+        if (e.key === 'ArrowLeft' && galeriaAtual.length > 1) mudarFoto(-1);
     });
 </script>
