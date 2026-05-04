@@ -659,7 +659,10 @@ export const discografia = [
 },
   {
     nome: "Quarteto Coração de Potro",
-    subtitulo: "Música tradicionalista",
+    subtitulo: {
+    pt: "Música Tradicionalista",
+    en: "Tradicional Music"
+  },
     albuns: [
       {
         id: "tempodenafo",
