@@ -124,10 +124,10 @@ discografiaFinal.forEach(artista => {
                             <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] text-center whitespace-normal md:whitespace-nowrap px-2">
                                 {artista.nome}
                             </span>
-                            {/* SUBTÍTULO CONDICIONAL */}
-                            {artista.subtitulo && (
+                            {/* SUBTÍTULO CONDICIONAL BILÍNGUE (Usa a variável lang do topo do arquivo) */}
+                            {artista.subtitulo && (typeof artista.subtitulo === 'string' ? artista.subtitulo : artista.subtitulo[lang]) && (
                                 <span class="text-xs md:text-sm font-medium text-stone-500 italic tracking-wide mt-1 uppercase">
-                                    {artista.subtitulo}
+                                    {typeof artista.subtitulo === 'string' ? artista.subtitulo : artista.subtitulo[lang]}
                                 </span>
                             )}
                         </div>
