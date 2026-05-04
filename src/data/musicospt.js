@@ -770,6 +770,25 @@ Psicossocial de Blumenau. Já atuou como músico violonista em recitais solo, m�
     eh_compositor: false,
     eh_violonista: true,
   },
+  {
+    id: "luizchatovani",
+    nome: "Luiz Mantovani",
+    foto: "/images/pessoas/mantovani1.avif",
+    bio: `<p>
+O violonista brasileiro Luiz Mantovani é dono de uma bem-sucedida carreira internacional que combina performance, ensino e pesquisa. Em 2002, foi vencedor do Pro Musicis International Award em Nova York, o que levou a recitais solo em salas como o Carnegie Hall e a Salle Cortot em Paris, entre outras. Em uma destas ocasiões, o The New York Times descreveu sua interpretação das Five Bagatelles de William Walton como “poderosa, belamente delineada e praticamente impecável”. Um dedicado camerista, ele foi membro do Quarteto Brasileiro de Violões (Brazilian Guitar Quartet) por 11 anos, tendo recebido o Grammy Latino de 2011 pelo álbum BGQ plays Villa-Lobos. Sua produção discográfica inclui ainda álbuns pelos selos Delos (EUA) e Stradivarius (Itália).
+
+Luiz Mantovani possui um PhD pelo Royal College of Music de Londres, no qual investigou as sonatas camerísticas do compositor vienense Ferdinand Rebay. Considerado uma das principais autoridades em Rebay, suas publicações incluem um verbete para o Grove Music Online e artigos em periódicos especializados. Recentemente, recebeu o Best Paper Award 2022 da Musicologica Austriaca, o periódico da Sociedade Austríaca de Musicologia. Luiz foi o primeiro violonista a obter o prestigiado Artist Diploma no New England Conservatory of Music em Boston, sendo Mestre em Música também pelo NEC e Bacharel em Música pela Universidade Federal do Estado do Rio de Janeiro – UNIRIO. Seus professores de violão foram David Leisner, Nicolas Barros e Antônio Guedes.
+
+Desde 2003, Luiz Mantovani é professor da Universidade do Estado de Santa Catarina – UDESC, trabalhando nos âmbitos da graduação e pós-graduação. Além de suas atividades pedagógicas como professor universitário, Luiz é frequentemente convidado para ministrar masterclasses e apresentar palestras em âmbito internacional.
+
+<div style="color: gray; font-size: 0.8em; text-align: right; margin-top: 5px;">
+  Fonte: Cedido pelo músico
+</div>
+</p>`,   
+    galeria: ["/images/pessoas/mantovani1.avif","/images/pessoas/mantovani2.avif","/images/pessoas/mantovani3.avif"],
+    eh_compositor: false,
+    eh_violonista: true,
+  },
 
 
 
