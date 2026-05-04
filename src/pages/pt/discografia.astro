@@ -117,14 +117,20 @@ discografiaFinal.forEach(artista => {
             {discografiaFinal.map((artista, index) => (
                 <section class="relative w-full max-w-full artista-section" data-artista={artista.nome.toLowerCase()}>
                     
-                    {/* Tamanho de fonte do nome do artista ajustado para o mobile */}
                     <h2 class={`text-2xl md:text-3xl font-bold mb-10 flex items-center gap-2 md:gap-4 ${secoesEspeciaisNomes.includes(artista.nome) ? 'text-amber-700' : 'text-red-700'}`}>
                         <span class={`h-px flex-1 bg-gradient-to-r from-transparent ${secoesEspeciaisNomes.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
                         
-                        {/* Removido o whitespace-nowrap agressivo no mobile para evitar quebras de margem */}
-                        <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] text-center whitespace-normal md:whitespace-nowrap px-2">
-                            {artista.nome}
-                        </span>
+                        <div class="flex flex-col items-center">
+                            <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] text-center whitespace-normal md:whitespace-nowrap px-2">
+                                {artista.nome}
+                            </span>
+                            {/* SUBTÍTULO CONDICIONAL */}
+                            {artista.subtitulo && (
+                                <span class="text-xs md:text-sm font-medium text-stone-500 italic tracking-wide mt-1 uppercase">
+                                    {artista.subtitulo}
+                                </span>
+                            )}
+                        </div>
                         
                         <span class={`h-px flex-1 bg-gradient-to-l from-transparent ${secoesEspeciaisNomes.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
                     </h2>
@@ -216,7 +222,6 @@ discografiaFinal.forEach(artista => {
 
     <div id="modal-overlay" class="fixed inset-0 z-50 hidden bg-stone-900/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
         
-        {/* AQUI ESTÁ A MUDANÇA PRINCIPAL: Usando flex e grid em conjunto com overflow controlado */}
         <div class="bg-white rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-y-auto md:overflow-hidden shadow-2xl relative transform scale-95 transition-transform duration-300 flex flex-col md:grid md:grid-cols-2" id="modal-content">
             
             <button onclick="fecharModal()" class="absolute top-6 right-6 bg-white/80 hover:bg-rose-600 hover:text-white text-gray-800 rounded-full p-2 transition-all z-20 shadow-lg border border-gray-200">
@@ -225,14 +230,12 @@ discografiaFinal.forEach(artista => {
                 </svg>
             </button>
 
-            {/* Coluna da Imagem: Fixa, ocupa altura total disponível e nunca rola */}
             <div class="bg-stone-100 p-6 md:p-12 flex flex-col items-center justify-center relative overflow-hidden h-full min-h-[300px]">
                 <svg class="absolute -bottom-10 -left-10 text-stone-200 w-48 h-48 opacity-50 z-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg>
                 
                 <img id="modal-capa" src="" alt="Capa" class="w-full aspect-square object-cover rounded-lg shadow-[0_20px_40px_rgba(0,0,0,0.3)] z-10 border border-stone-200" />
             </div>
 
-            {/* Coluna do Texto/Faixas: Scroll independente no desktop */}
             <div class="p-8 md:p-12 bg-white md:overflow-y-auto max-h-[90vh]">
                 <p id="modal-autor" class="text-xs font-black tracking-[0.2em] text-rose-600 uppercase mb-3 flex items-center gap-2">
                     <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"></path></svg>
@@ -276,12 +279,10 @@ discografiaFinal.forEach(artista => {
                     const albuns = secao.querySelectorAll('.album-item');
                     let encontrouAlbumNaSecao = false;
 
-                    // Verifica se o nome do artista já combina com a pesquisa
                     const artistaCombina = nomeArtista.includes(termoBusca);
 
                     albuns.forEach(album => {
                         const tituloAlbum = album.getAttribute('data-titulo');
-                        // Se o artista bateu OU o álbum bateu, o álbum aparece
                         if (artistaCombina || tituloAlbum.includes(termoBusca)) {
                             album.style.display = 'flex';
                             encontrouAlbumNaSecao = true;
@@ -290,7 +291,6 @@ discografiaFinal.forEach(artista => {
                         }
                     });
 
-                    // Mostra ou esconde a seção inteira do artista
                     if (artistaCombina || encontrouAlbumNaSecao) {
                         secao.style.display = 'block';
                         encontrouQualquer = true;
@@ -299,30 +299,25 @@ discografiaFinal.forEach(artista => {
                     }
                 });
 
-                // Mostra/Esconde a mensagem de "Nenhuma discografia encontrada"
                 if (encontrouQualquer) {
                     if (noResults) noResults.classList.add('hidden');
                 } else {
                     if (noResults) noResults.classList.remove('hidden');
                 }
 
-                // Recalcula as setas pois os álbuns visíveis mudaram
                 atualizarSetasCarrossel();
             });
 
-            // --- LÓGICA DA URL: Puxa o link do modal de Biografias/Catálogo ---
             const urlParams = new URLSearchParams(window.location.search);
             const buscaDaUrl = urlParams.get('busca');
             
             if (buscaDaUrl) {
-                searchInput.value = buscaDaUrl; // Preenche a barra visualmente
-                searchInput.dispatchEvent(new Event('input')); // Finge que o usuário digitou
+                searchInput.value = buscaDaUrl; 
+                searchInput.dispatchEvent(new Event('input'));
             }
         }
     });
 
-
-    // --- LÓGICA DO CARROSSEL ---
     window.rolarCarrossel = (id, direcao) => {
         const container = document.getElementById(id);
         if (container) {
@@ -331,7 +326,6 @@ discografiaFinal.forEach(artista => {
         }
     };
 
-    // Função para verificar se os botões precisam aparecer (se há transbordo de conteúdo)
     function atualizarSetasCarrossel() {
         const wrappers = document.querySelectorAll('.carrossel-wrapper');
         
@@ -340,11 +334,10 @@ discografiaFinal.forEach(artista => {
             const btns = wrapper.querySelectorAll('.carrossel-btn');
             
             if (container && btns.length) {
-                // Se a largura total do conteúdo for maior que a largura visível, precisamos de setas
                 if (container.scrollWidth > Math.ceil(container.clientWidth)) {
-                    btns.forEach(btn => btn.style.display = ''); // Permite que a classe md:flex do Tailwind funcione
+                    btns.forEach(btn => btn.style.display = ''); 
                 } else {
-                    btns.forEach(btn => btn.style.display = 'none'); // Oculta as setas forçadamente
+                    btns.forEach(btn => btn.style.display = 'none'); 
                 }
             }
         });
@@ -354,8 +347,6 @@ discografiaFinal.forEach(artista => {
     window.addEventListener('resize', atualizarSetasCarrossel);
     setTimeout(atualizarSetasCarrossel, 150);
 
-
-    // --- LÓGICA DO MODAL ---
     const overlay = document.getElementById('modal-overlay');
     const content = document.getElementById('modal-content');
     const mTitulo = document.getElementById('modal-titulo');
@@ -415,7 +406,6 @@ discografiaFinal.forEach(artista => {
 </script>
 
 <style>
-    /* Ocultar barra de rolagem nativa para um visual mais limpo */
     .hide-scrollbar::-webkit-scrollbar {
         display: none;
     }
