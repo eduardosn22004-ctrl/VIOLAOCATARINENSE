@@ -5,19 +5,26 @@ import Layout from '../../layouts/Layout.astro';
 import { discografia } from '../../data/discografia.js';
 
 const lang = 'en';
-// --- NOVA LÓGICA DE ORDENAÇÃO ---
-const secoesEspeciaisNomes = ["Violonistas diversos", "Duos", "Quartetos", "Formações Diversas"];
+
+// --- NOVA LÓGICA DE ORDENAÇÃO E TRADUÇÃO ---
+const secoesEspeciaisNomes = {
+  pt: ["Violonistas diversos", "Duos", "Quartetos", "Formações Diversas"],
+  en: ["Various Guitarists", "Duos", "Quartets", "Various Ensembles"]
+};
+
+// Usamos a lista em PT para manter o vínculo com o seu banco de dados
+const nomesPT = secoesEspeciaisNomes.pt;
 
 // 1. Separa o que é artista comum do que é seção especial
-const artistasComuns = discografia.filter(a => !secoesEspeciaisNomes.includes(a.nome));
-const secoesEspeciais = discografia.filter(a => secoesEspeciaisNomes.includes(a.nome));
+const artistasComuns = discografia.filter(a => !nomesPT.includes(a.nome));
+const secoesEspeciais = discografia.filter(a => nomesPT.includes(a.nome));
 
 // 2. Ordena os artistas comuns por ordem alfabética
 artistasComuns.sort((a, b) => a.nome.localeCompare(b.nome));
 
-// 3. Ordena as seções especiais conforme a ordem do array 'secoesEspeciaisNomes'
+// 3. Ordena as seções especiais conforme a ordem do array em PT
 secoesEspeciais.sort((a, b) => 
-  secoesEspeciaisNomes.indexOf(a.nome) - secoesEspeciaisNomes.indexOf(b.nome)
+  nomesPT.indexOf(a.nome) - nomesPT.indexOf(b.nome)
 );
 
 // 4. Junta tudo: primeiro os alfabéticos, depois os especiais
@@ -29,6 +36,16 @@ discografiaFinal.forEach(artista => {
     artista.albuns.sort((a, b) => parseInt(a.ano) - parseInt(b.ano));
   }
 });
+
+// Função para traduzir o nome apenas na hora de exibir na tela
+const getNomeExibicao = (nome) => {
+  const index = nomesPT.indexOf(nome);
+  if (index !== -1) {
+    // Garante que não vai quebrar se a tradução falhar
+    return secoesEspeciaisNomes[lang]?.[index] || nome;
+  }
+  return nome;
+};
 ---
 
 <Layout title="Violão Catarinense">
@@ -115,14 +132,14 @@ discografiaFinal.forEach(artista => {
 
         <div class="space-y-24">
             {discografiaFinal.map((artista, index) => (
-                <section class="relative w-full max-w-full artista-section" data-artista={artista.nome.toLowerCase()}>
+                <section class="relative w-full max-w-full artista-section" data-artista={`${artista.nome.toLowerCase()} ${getNomeExibicao(artista.nome).toLowerCase()}`}>
                     
-                    <h2 class={`text-2xl md:text-3xl font-bold mb-10 flex items-center gap-2 md:gap-4 ${secoesEspeciaisNomes.includes(artista.nome) ? 'text-amber-700' : 'text-red-700'}`}>
-                        <span class={`h-px flex-1 bg-gradient-to-r from-transparent ${secoesEspeciaisNomes.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
+                    <h2 class={`text-2xl md:text-3xl font-bold mb-10 flex items-center gap-2 md:gap-4 ${nomesPT.includes(artista.nome) ? 'text-amber-700' : 'text-red-700'}`}>
+                        <span class={`h-px flex-1 bg-gradient-to-r from-transparent ${nomesPT.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
                         
                         <div class="flex flex-col items-center">
                             <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] text-center whitespace-normal md:whitespace-nowrap px-2">
-                                {artista.nome}
+                                {getNomeExibicao(artista.nome)}
                             </span>
                             
                             {/* SUBTÍTULO CONDICIONAL BILÍNGUE (Usa a variável lang do topo do arquivo) */}
@@ -133,7 +150,7 @@ discografiaFinal.forEach(artista => {
                             )}
                         </div>
                         
-                        <span class={`h-px flex-1 bg-gradient-to-l from-transparent ${secoesEspeciaisNomes.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
+                        <span class={`h-px flex-1 bg-gradient-to-l from-transparent ${nomesPT.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
                     </h2>
 
                     <div class="relative group/carousel carrossel-wrapper">
@@ -149,7 +166,7 @@ discografiaFinal.forEach(artista => {
                         <div id={`carousel-${index}`} class="carrossel-container flex overflow-x-auto gap-8 pt-4 pb-12 snap-x snap-mandatory scroll-smooth hide-scrollbar px-2 -mx-2">
                             {artista.albuns.map((album) => (
                                 <button 
-                                    onclick={`abrirAlbum('${album.id}', '${artista.nome.replace(/'/g, "\\'")}')`}
+                                    onclick={`abrirAlbum('${album.id}', '${getNomeExibicao(artista.nome).replace(/'/g, "\\'")}')`}
                                     class="group flex flex-col text-left bg-transparent rounded-xl overflow-visible focus:outline-none shrink-0 w-56 md:w-64 snap-start album-item"
                                     data-titulo={album.titulo.toLowerCase()}
                                 >
