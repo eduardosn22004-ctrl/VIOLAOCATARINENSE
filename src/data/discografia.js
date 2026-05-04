@@ -818,5 +818,8 @@ export const discografia = [
         ano: "2009",
         capa: "/images/capa/trioponteio.avif",
         faixas: ["Arreio", "Lá Fora", "Bicicleta", "En El Altillo", "Colheita", "Revoada", "Relieves", "Xiruzada", "Chamando Chuva", "Chacarém"]
-      },
+       }
+          ] 
+        },
+  }
 ]
