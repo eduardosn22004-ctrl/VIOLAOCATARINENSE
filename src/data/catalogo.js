@@ -210,6 +210,7 @@ export const catalogo = [
       { titulo: "Três de Março", ano: "2018", formacao: "Violão Solo", linkYoutube: "" },
       { titulo: "Reflexão", ano: "2021", formacao: "Violão Solo", linkYoutube: "" },
       { titulo: "Valsa da Liberdade", ano: "2024", formacao: "Violão Solo", linkYoutube: "" }
+      { titulo: "Garrote de Papaia", ano: "2026", formacao: "Violão Solo", linkYoutube: "" }
     ]
   },
   {
