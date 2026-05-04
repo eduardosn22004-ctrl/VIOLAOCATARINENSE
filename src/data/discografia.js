@@ -804,5 +804,19 @@ export const discografia = [
         faixas: ["A Chacarera da Moça", "Com a Tropilha por Diante", "Folcloreando", "Gauchando", "Tocando um Baio por Diante", "Peão do Posto do Meio", "Redomão", "Rincão dos Touros", "Tô de Volta Chamarrita", "Na Outra Lua"]
      }
           ] 
-        }
+        },
+  {
+    nome: "Trio Ponteio",
+    albuns: [
+      {
+        id: "trioponteio",
+        titulo: "Trio Ponteio",
+        descricao: {
+                    pt: "Flauta, Gaita Ponto e Violão",
+                    en: "Flute, Button Accordion and  Acoustic Guitar",
+             }, 
+        ano: "2009",
+        capa: "/images/capa/trioponteio.avif",
+        faixas: ["Arreio", "Lá Fora", "Bicicleta", "En El Altillo", "Colheita", "Revoada", "Relieves", "Xiruzada", "Chamando Chuva", "Chacarém"]
+      },
 ]
