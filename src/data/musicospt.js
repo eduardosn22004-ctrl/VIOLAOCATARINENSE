@@ -773,7 +773,7 @@ Psicossocial de Blumenau. Já atuou como músico violonista em recitais solo, m�
   {
     id: "luizchatovani",
     nome: "Luiz Mantovani",
-    foto: "/images/pessoas/mantovani1.avif",
+    foto: "/images/pessoas/mantovanip.avif",
     bio: `<p>
 O violonista brasileiro Luiz Mantovani é dono de uma bem-sucedida carreira internacional que combina performance, ensino e pesquisa. Em 2002, foi vencedor do Pro Musicis International Award em Nova York, o que levou a recitais solo em salas como o Carnegie Hall e a Salle Cortot em Paris, entre outras. Em uma destas ocasiões, o The New York Times descreveu sua interpretação das Five Bagatelles de William Walton como “poderosa, belamente delineada e praticamente impecável”. Um dedicado camerista, ele foi membro do Quarteto Brasileiro de Violões (Brazilian Guitar Quartet) por 11 anos, tendo recebido o Grammy Latino de 2011 pelo álbum BGQ plays Villa-Lobos. Sua produção discográfica inclui ainda álbuns pelos selos Delos (EUA) e Stradivarius (Itália).
 
@@ -785,7 +785,7 @@ Desde 2003, Luiz Mantovani é professor da Universidade do Estado de Santa Catar
   Fonte: Cedido pelo músico
 </div>
 </p>`,   
-    galeria: ["/images/pessoas/mantovani1.avif","/images/pessoas/mantovani2.avif","/images/pessoas/mantovani3.avif"],
+    galeria: ["/images/pessoas/mantovani2.avif","/images/pessoas/mantovani3.avif","/images/pessoas/mantovani1.avif"],
     eh_compositor: false,
     eh_violonista: true,
   },
