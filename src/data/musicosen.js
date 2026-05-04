@@ -687,13 +687,34 @@ for the Music program. Since 2000, he has coordinated the extension project Came
 workshops for users of the Psychosocial Care Center of Blumenau. He has performed as a guitarist in solo recitals, chamber music, and as a soloist in orchestral concerts in Blumenau and the Middle Itajaí Valley region. He also performs as a popular musician—vocals 
 and guitar—with an emphasis on international pop rock.
 <div style="color: gray; font-size: 0.8em; text-align: right; margin-top: 5px;">
-  Fonte: Lattes Curriculum
+  Source: Lattes Curriculum
 </div>
 </p>`,   
     galeria: ["/images/pessoas/renatomor2.avif"],
     eh_compositor: false,
     eh_violonista: true,
   },
+    {
+    id: "luizchatovani",
+    nome: "Luiz Mantovani",
+    foto: "/images/pessoas/mantovanip.avif",
+    bio: `<p>
+Brazilian guitarist Luiz Mantovani has built a thriving international career that successfully combines performance, teaching, and research. In 2002 he won the Pro Musicis International Award, leading to solo recitals at prestigious venues like Carnegie Hall in New York and Salle Cortot in Paris, among others. On one of these occasions, The New York Times praised his rendition of William Walton's Five Bagatelles as "powerful, beautifully delineated and just about flawless". A keen chamber musician, Mantovani was a member of the Brazilian Guitar Quartet for 11 years, with whom he was awarded the 2011 Latin Grammy for the album BGQ plays Villa-Lobos. His output also includes albums on the Delos (USA) and Stradivarius (Italy) labels.
+
+Luiz Mantovani holds a PhD from the Royal College of Music in London, where he investigated the chamber sonatas of Viennese composer Ferdinand Rebay. Regarded as a leading expert on Rebay, his publications include an entry in Grove Music Online and several articles in peer-reviewed journals. He recently received the Best Paper Award 2022 from Musicologica Austriaca, the journal of the Austrian Musicological Society. Mantovani was the first guitarist to receive the prestigious Artist Diploma from the New England Conservatory of Music in Boston. He also holds a Master of Music degree from NEC and a Bachelor of Music degree from the Federal University of Rio de Janeiro. His guitar mentors were David Leisner, Nicolas Barros, and Antonio Guedes.
+
+Since 2003, Luiz Mantovani has been a faculty member at the State University of Santa Catarina – UDESC, in Florianopolis, southern Brazil. In addition to university teaching, Luiz is frequently invited to conduct masterclasses and deliver lectures internationally.
+
+
+<div style="color: gray; font-size: 0.8em; text-align: right; margin-top: 5px;">
+  Fonte: Provided by the musician
+</div>
+</p>`,   
+    galeria: ["/images/pessoas/mantovani2.avif","/images/pessoas/mantovani3.avif","/images/pessoas/mantovani1.avif"],
+    eh_compositor: false,
+    eh_violonista: true,
+  },
+
 
 
 
