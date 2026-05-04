@@ -117,14 +117,21 @@ discografiaFinal.forEach(artista => {
             {discografiaFinal.map((artista, index) => (
                 <section class="relative w-full max-w-full artista-section" data-artista={artista.nome.toLowerCase()}>
                     
-                    {/* Tamanho de fonte do nome do artista ajustado para o mobile */}
                     <h2 class={`text-2xl md:text-3xl font-bold mb-10 flex items-center gap-2 md:gap-4 ${secoesEspeciaisNomes.includes(artista.nome) ? 'text-amber-700' : 'text-red-700'}`}>
                         <span class={`h-px flex-1 bg-gradient-to-r from-transparent ${secoesEspeciaisNomes.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
                         
-                        {/* Removido o whitespace-nowrap agressivo no mobile para evitar quebras de margem */}
-                        <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] text-center whitespace-normal md:whitespace-nowrap px-2">
-                            {artista.nome}
-                        </span>
+                        <div class="flex flex-col items-center">
+                            <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] text-center whitespace-normal md:whitespace-nowrap px-2">
+                                {artista.nome}
+                            </span>
+                            
+                            {/* SUBTÍTULO CONDICIONAL BILÍNGUE (Usa a variável lang do topo do arquivo) */}
+                            {artista.subtitulo && (typeof artista.subtitulo === 'string' ? artista.subtitulo : artista.subtitulo[lang]) && (
+                                <span class="text-xs md:text-sm font-medium text-stone-500 italic tracking-wide mt-1 uppercase">
+                                    {typeof artista.subtitulo === 'string' ? artista.subtitulo : artista.subtitulo[lang]}
+                                </span>
+                            )}
+                        </div>
                         
                         <span class={`h-px flex-1 bg-gradient-to-l from-transparent ${secoesEspeciaisNomes.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
                     </h2>
@@ -172,7 +179,7 @@ discografiaFinal.forEach(artista => {
                                         </div>
                                     </div>
                                     
-                                   <div class="px-4 z-20 relative text-center">
+                                    <div class="px-4 z-20 relative text-center">
     <h3 class="font-bold text-gray-800 group-hover:text-rose-700 text-sm md:text-base leading-tight line-clamp-2 transition-colors">
         {album.titulo}
     </h3>
@@ -253,6 +260,7 @@ discografiaFinal.forEach(artista => {
                     <ol id="modal-faixas" class="space-y-3 text-gray-600"></ol>
                 </div>
             </div>
+            
         </div>
     </div>
 
@@ -275,12 +283,10 @@ discografiaFinal.forEach(artista => {
                     const albuns = secao.querySelectorAll('.album-item');
                     let encontrouAlbumNaSecao = false;
 
-                    // Verifica se o nome do artista já combina com a pesquisa
                     const artistaCombina = nomeArtista.includes(termoBusca);
 
                     albuns.forEach(album => {
                         const tituloAlbum = album.getAttribute('data-titulo');
-                        // Se o artista bateu OU o álbum bateu, o álbum aparece
                         if (artistaCombina || tituloAlbum.includes(termoBusca)) {
                             album.style.display = 'flex';
                             encontrouAlbumNaSecao = true;
@@ -289,7 +295,6 @@ discografiaFinal.forEach(artista => {
                         }
                     });
 
-                    // Mostra ou esconde a seção inteira do artista
                     if (artistaCombina || encontrouAlbumNaSecao) {
                         secao.style.display = 'block';
                         encontrouQualquer = true;
@@ -298,30 +303,25 @@ discografiaFinal.forEach(artista => {
                     }
                 });
 
-                // Mostra/Esconde a mensagem de "Nenhuma discografia encontrada"
                 if (encontrouQualquer) {
                     if (noResults) noResults.classList.add('hidden');
                 } else {
                     if (noResults) noResults.classList.remove('hidden');
                 }
 
-                // Recalcula as setas pois os álbuns visíveis mudaram
                 atualizarSetasCarrossel();
             });
 
-            // --- LÓGICA DA URL: Puxa o link do modal de Biografias/Catálogo ---
             const urlParams = new URLSearchParams(window.location.search);
             const buscaDaUrl = urlParams.get('busca');
             
             if (buscaDaUrl) {
-                searchInput.value = buscaDaUrl; // Preenche a barra visualmente
-                searchInput.dispatchEvent(new Event('input')); // Finge que o usuário digitou
+                searchInput.value = buscaDaUrl; 
+                searchInput.dispatchEvent(new Event('input'));
             }
         }
     });
 
-
-    // --- LÓGICA DO CARROSSEL ---
     window.rolarCarrossel = (id, direcao) => {
         const container = document.getElementById(id);
         if (container) {
@@ -330,7 +330,6 @@ discografiaFinal.forEach(artista => {
         }
     };
 
-    // Função para verificar se os botões precisam aparecer (se há transbordo de conteúdo)
     function atualizarSetasCarrossel() {
         const wrappers = document.querySelectorAll('.carrossel-wrapper');
         
@@ -339,11 +338,10 @@ discografiaFinal.forEach(artista => {
             const btns = wrapper.querySelectorAll('.carrossel-btn');
             
             if (container && btns.length) {
-                // Se a largura total do conteúdo for maior que a largura visível, precisamos de setas
                 if (container.scrollWidth > Math.ceil(container.clientWidth)) {
-                    btns.forEach(btn => btn.style.display = ''); // Permite que a classe md:flex do Tailwind funcione
+                    btns.forEach(btn => btn.style.display = ''); 
                 } else {
-                    btns.forEach(btn => btn.style.display = 'none'); // Oculta as setas forçadamente
+                    btns.forEach(btn => btn.style.display = 'none'); 
                 }
             }
         });
@@ -353,8 +351,6 @@ discografiaFinal.forEach(artista => {
     window.addEventListener('resize', atualizarSetasCarrossel);
     setTimeout(atualizarSetasCarrossel, 150);
 
-
-    // --- LÓGICA DO MODAL ---
     const overlay = document.getElementById('modal-overlay');
     const content = document.getElementById('modal-content');
     const mTitulo = document.getElementById('modal-titulo');
@@ -414,7 +410,6 @@ discografiaFinal.forEach(artista => {
 </script>
 
 <style>
-    /* Ocultar barra de rolagem nativa para um visual mais limpo */
     .hide-scrollbar::-webkit-scrollbar {
         display: none;
     }
