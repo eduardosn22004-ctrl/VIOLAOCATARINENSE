@@ -659,6 +659,10 @@ export const discografia = [
 },
   {
     nome: "Quarteto Coração de Potro",
+    subtitulo: {
+    pt: "Música Tradicionalista",
+    en: "Tradicional Music"
+  },
     albuns: [
       {
         id: "tempodenafo",
@@ -801,6 +805,23 @@ export const discografia = [
      }
           ] 
         },
+        {
+  nome: "Música Tradicionalista",
+  subArtistas: [
+    {
+      nome: "Quartaretoto Coração de Potro",
+      albuns: [
+        { id: "trad1", titulo: "Álbum 1", ano: "2010", capa: "...", faixas: ["..."] }
+      ]
+    },
+    {
+      nome: "Nome do Segundo Músico",
+      albuns: [
+        { id: "trad2", titulo: "Álbum 2", ano: "2015", capa: "...", faixas: ["..."] }
+      ]
+    }
+  ]
+},
   {
     nome: "Trio Ponteio",
     albuns: [
