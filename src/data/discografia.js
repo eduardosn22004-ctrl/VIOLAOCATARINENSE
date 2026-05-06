@@ -951,11 +951,9 @@ export const discografia = [
         faixas: ["A Chacarera da Moça", "Com a Tropilha por Diante", "Folcloreando", "Gauchando", "Tocando um Baio por Diante", "Peão do Posto do Meio", "Redomão", "Rincão dos Touros", "Tô de Volta Chamarrita", "Na Outra Lua"]
      }
         ]
-      } // Fechamento do "1Quarteto Coração de Potro"
-    ] // Fechamento do array "subArtistas"
-  }, // Fechamento do objeto "Música Tradicionalista"
-    {
-    nome: "Trio Ponteio",
+      }, // Fechamento do "1Quarteto Coração de Potro"
+     {
+    nome: "1Trio Ponteio",
     albuns: [
       {
         id: "trioponteio",
@@ -969,5 +967,11 @@ export const discografia = [
         faixas: ["Arreio", "Lá Fora", "Bicicleta", "En El Altillo", "Colheita", "Revoada", "Relieves", "Xiruzada", "Chamando Chuva", "Chacarém"]
      }
     ]
+  }, //fechamento do trio
+    
+    ] // Fechamento do array "subArtistas"
+  }, // Fechamento do objeto "Música Tradicionalista"
+
+  
   } // Fechamento do objeto do artista
 ]; // Fechamento do Array principal
