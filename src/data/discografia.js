@@ -950,9 +950,11 @@ export const discografia = [
         capa: "/images/capa/ensaioquar.avif",
         faixas: ["A Chacarera da Moça", "Com a Tropilha por Diante", "Folcloreando", "Gauchando", "Tocando um Baio por Diante", "Peão do Posto do Meio", "Redomão", "Rincão dos Touros", "Tô de Volta Chamarrita", "Na Outra Lua"]
      }
-          ] 
-        },
-  {
+        ]
+      } // Fechamento do "1Quarteto Coração de Potro"
+    ] // Fechamento do array "subArtistas"
+  }, // Fechamento do objeto "Música Tradicionalista"
+    {
     nome: "Trio Ponteio",
     albuns: [
       {
