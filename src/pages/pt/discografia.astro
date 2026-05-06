@@ -6,7 +6,7 @@ import { discografia } from '../../data/discografia.js';
 
 const lang = 'pt';
 // --- NOVA LÓGICA DE ORDENAÇÃO ---
-const secoesEspeciaisNomes = ["Violonistas diversos", "Duos", "Quartetos", "Formações Diversas"];
+const secoesEspeciaisNomes = ["Violonistas diversos", "Duos", "Quartetos", "Formações Diversas", "Música Tradicionalista"];
 
 // 1. Separa o que é artista comum do que é seção especial
 const artistasComuns = discografia.filter(a => !secoesEspeciaisNomes.includes(a.nome));
@@ -23,10 +23,17 @@ secoesEspeciais.sort((a, b) =>
 // 4. Junta tudo: primeiro os alfabéticos, depois os especiais
 const discografiaFinal = [...artistasComuns, ...secoesEspeciais];
 
-// 5. Ordena os álbuns de cada item por ano
+// 5. Ordena os álbuns de cada item e sub-item por ano
 discografiaFinal.forEach(artista => {
   if(artista.albuns) {
     artista.albuns.sort((a, b) => parseInt(a.ano) - parseInt(b.ano));
+  }
+  if(artista.subArtistas) {
+    artista.subArtistas.forEach(sub => {
+      if(sub.albuns) {
+        sub.albuns.sort((a, b) => parseInt(a.ano) - parseInt(b.ano));
+      }
+    });
   }
 });
 ---
@@ -92,7 +99,7 @@ discografiaFinal.forEach(artista => {
         </p>
     </div>
 
-            {/* --- NOVA BARRA DE PESQUISA --- */}
+            {/* --- BARRA DE PESQUISA --- */}
             <div class="max-w-xl w-full mx-auto px-4 mt-8">
                 <div class="relative group">
                     <input 
@@ -109,7 +116,6 @@ discografiaFinal.forEach(artista => {
                 </div>
                 <p id="noResults" class="hidden text-center mt-4 text-stone-500 italic">Nenhuma discografia encontrada.</p>
             </div>
-            {/* ------------------------------ */}
 
         </header>
 
@@ -124,7 +130,7 @@ discografiaFinal.forEach(artista => {
                             <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] text-center whitespace-normal md:whitespace-nowrap px-2">
                                 {artista.nome}
                             </span>
-                            {/* SUBTÍTULO CONDICIONAL BILÍNGUE (Usa a variável lang do topo do arquivo) */}
+                            {/* SUBTÍTULO CONDICIONAL BILÍNGUE */}
                             {artista.subtitulo && (typeof artista.subtitulo === 'string' ? artista.subtitulo : artista.subtitulo[lang]) && (
                                 <span class="text-xs md:text-sm font-medium text-stone-500 italic tracking-wide mt-1 uppercase">
                                     {typeof artista.subtitulo === 'string' ? artista.subtitulo : artista.subtitulo[lang]}
@@ -135,86 +141,164 @@ discografiaFinal.forEach(artista => {
                         <span class={`h-px flex-1 bg-gradient-to-l from-transparent ${secoesEspeciaisNomes.includes(artista.nome) ? 'to-amber-500' : 'to-rose-500'}`}></span>
                     </h2>
 
-                    <div class="relative group/carousel carrossel-wrapper">
-                        
-                        <button 
-                            onclick={`rolarCarrossel('carousel-${index}', -1)`}
-                            class="carrossel-btn hidden md:flex absolute left-0 top-[40%] -translate-y-1/2 -ml-4 z-30 bg-white text-rose-700 p-3 rounded-full shadow-lg border border-stone-200 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-rose-50 hover:scale-110 focus:outline-none"
-                            aria-label="Rolar para a esquerda"
-                        >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
-                        </button>
+                    {/* --- CASO 1: ARTISTA NORMAL OU SEÇÃO COM ÁLBUNS DIRETOS --- */}
+                    {artista.albuns && (
+                        <div class="relative group/carousel carrossel-wrapper">
+                            
+                            <button 
+                                onclick={`rolarCarrossel('carousel-${index}', -1)`}
+                                class="carrossel-btn hidden md:flex absolute left-0 top-[40%] -translate-y-1/2 -ml-4 z-30 bg-white text-rose-700 p-3 rounded-full shadow-lg border border-stone-200 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-rose-50 hover:scale-110 focus:outline-none"
+                                aria-label="Rolar para a esquerda"
+                            >
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                            </button>
 
-                        <div id={`carousel-${index}`} class="carrossel-container flex overflow-x-auto gap-8 pt-4 pb-12 snap-x snap-mandatory scroll-smooth hide-scrollbar px-2 -mx-2">
-                            {artista.albuns.map((album) => (
-                                <button 
-                                    onclick={`abrirAlbum('${album.id}', '${artista.nome.replace(/'/g, "\\'")}')`}
-                                    class="group flex flex-col text-left bg-transparent rounded-xl overflow-visible focus:outline-none shrink-0 w-56 md:w-64 snap-start album-item"
-                                    data-titulo={album.titulo.toLowerCase()}
-                                >
-                                    <div class="relative w-[80%] aspect-square mb-4 mx-auto shrink-0">
+                            <div id={`carousel-${index}`} class="carrossel-container flex overflow-x-auto gap-8 pt-4 pb-12 snap-x snap-mandatory scroll-smooth hide-scrollbar px-2 -mx-2">
+                                {artista.albuns.map((album) => (
+                                    <button 
+                                        onclick={`abrirAlbum('${album.id}', '${artista.nome.replace(/'/g, "\\'")}')`}
+                                        class="group flex flex-col text-left bg-transparent rounded-xl overflow-visible focus:outline-none shrink-0 w-56 md:w-64 snap-start album-item"
+                                        data-titulo={album.titulo.toLowerCase()}
+                                    >
+                                        <div class="relative w-[80%] aspect-square mb-4 mx-auto shrink-0">
+                                            <div class="absolute inset-0 bg-gradient-to-br from-stone-800 to-black rounded-full shadow-lg flex items-center justify-center border border-stone-700 transition-all duration-700 ease-out group-hover:translate-x-[55%] group-hover:rotate-180 z-0">
+                                                <div class="absolute w-[90%] h-[90%] rounded-full border border-white/10"></div>
+                                                <div class="absolute w-[75%] h-[75%] rounded-full border border-white/10"></div>
+                                                <div class="absolute w-[60%] h-[60%] rounded-full border border-white/10"></div>
+                                                
+                                                <div class="w-[33%] h-[33%] bg-red-700 rounded-full flex items-center justify-center border-[4px] border-[#111] relative overflow-hidden">
+                                                    <div class="absolute w-full h-1/2 top-0 bg-white/10 rounded-t-full"></div>
+                                                    <div class="w-3 h-3 bg-stone-200 rounded-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] z-10 border border-stone-400 relative"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="absolute inset-0 z-10 bg-gray-200 rounded-md shadow-md transition-transform duration-700 ease-out group-hover:-translate-x-3 group-hover:shadow-2xl border border-stone-200">
+                                                <img 
+                                                    src={album.capa} 
+                                                    alt={album.titulo} 
+                                                    class="absolute inset-0 w-full h-full object-cover rounded-md"
+                                                    loading="lazy"
+                                                />
+                                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-md flex items-center justify-center">
+                                                    <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                                                </div>
+                                            </div>
+                                        </div>
                                         
-                                        <div class="absolute inset-0 bg-gradient-to-br from-stone-800 to-black rounded-full shadow-lg flex items-center justify-center border border-stone-700 transition-all duration-700 ease-out group-hover:translate-x-[55%] group-hover:rotate-180 z-0">
-                                            <div class="absolute w-[90%] h-[90%] rounded-full border border-white/10"></div>
-                                            <div class="absolute w-[75%] h-[75%] rounded-full border border-white/10"></div>
-                                            <div class="absolute w-[60%] h-[60%] rounded-full border border-white/10"></div>
-                                            
-                                            <div class="w-[33%] h-[33%] bg-red-700 rounded-full flex items-center justify-center border-[4px] border-[#111] relative overflow-hidden">
-                                                <div class="absolute w-full h-1/2 top-0 bg-white/10 rounded-t-full"></div>
-                                                <div class="w-3 h-3 bg-stone-200 rounded-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] z-10 border border-stone-400 relative"></div>
-                                            </div>
+                                        <div class="px-4 z-20 relative text-center">
+                                            <h3 class="font-bold text-gray-800 group-hover:text-rose-700 text-sm md:text-base leading-tight line-clamp-2 transition-colors">
+                                                {album.titulo}
+                                            </h3>
+                                            {album.descricao && album.descricao[lang] && (
+                                                <p class="text-xs text-stone-400 mt-1 italic line-clamp-1">
+                                                    {album.descricao[lang]}
+                                                </p>
+                                            )}
+                                            <p class="text-xs text-gray-500 mt-2 font-bold tracking-widest flex items-center justify-center gap-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                {album.ano}
+                                            </p>
                                         </div>
 
-                                        <div class="absolute inset-0 z-10 bg-gray-200 rounded-md shadow-md transition-transform duration-700 ease-out group-hover:-translate-x-3 group-hover:shadow-2xl border border-stone-200">
-                                            <img 
-                                                src={album.capa} 
-                                                alt={album.titulo} 
-                                                class="absolute inset-0 w-full h-full object-cover rounded-md"
-                                                loading="lazy"
-                                            />
-                                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-md flex items-center justify-center">
-                                                <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                                            </div>
+                                        <div id={`data-${album.id}`} class="hidden">
+                                            <span class="data-titulo">{album.titulo}</span>
+                                            <span class="data-ano">{album.ano}</span>
+                                            <span class="data-capa">{album.capa}</span>
+                                            <span class="data-faixas">{JSON.stringify(album.faixas)}</span>
                                         </div>
-                                    </div>
+                                    </button>
+                                ))}
+                            </div>
+
+                            <button 
+                                onclick={`rolarCarrossel('carousel-${index}', 1)`}
+                                class="carrossel-btn hidden md:flex absolute right-0 top-[40%] -translate-y-1/2 -mr-4 z-30 bg-white text-rose-700 p-3 rounded-full shadow-lg border border-stone-200 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-rose-50 hover:scale-110 focus:outline-none"
+                                aria-label="Rolar para a direita"
+                            >
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                        </div>
+                    )}
+
+                   {/* --- CASO 2: SEÇÃO COM SUB-ARTISTAS (Ex: Música Tradicionalista) --- */}
+                    {artista.subArtistas && (
+                        <div class="space-y-16 mt-4">
+                            {artista.subArtistas.map((sub, subIndex) => (
+                                <div class="sub-artista-group" data-subartista={sub.nome.toLowerCase()}>
                                     
-                                    <div class="px-4 z-20 relative text-center">
-    <h3 class="font-bold text-gray-800 group-hover:text-rose-700 text-sm md:text-base leading-tight line-clamp-2 transition-colors">
-        {album.titulo}
-    </h3>
-    
-    {/* NOVA DESCRIÇÃO BILÍNGUE */}
-    {album.descricao && album.descricao[lang] && (
-        <p class="text-xs text-stone-400 mt-1 italic line-clamp-1">
-            {album.descricao[lang]}
-        </p>
-    )}
+                                    <h3 class="text-xl md:text-2xl font-bold text-stone-400 ml-4 mb-6">
+                                        {sub.nome}
+                                    </h3>
+                                    
+                                    <div class="relative group/carousel carrossel-wrapper">
+                                        <button 
+                                            onclick={`rolarCarrossel('carousel-${index}-${subIndex}', -1)`}
+                                            class="carrossel-btn hidden md:flex absolute left-0 top-[40%] -translate-y-1/2 -ml-4 z-30 bg-white text-rose-700 p-3 rounded-full shadow-lg border border-stone-200 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-rose-50 hover:scale-110 focus:outline-none"
+                                        >
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                                        </button>
 
-    <p class="text-xs text-gray-500 mt-2 font-bold tracking-widest flex items-center justify-center gap-1">
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-        {album.ano}
-    </p>
-</div>
+                                        <div id={`carousel-${index}-${subIndex}`} class="carrossel-container flex overflow-x-auto gap-8 pt-4 pb-12 snap-x snap-mandatory scroll-smooth hide-scrollbar px-2 -mx-2">
+                                            {sub.albuns.map((album) => (
+                                                <button 
+                                                    onclick={`abrirAlbum('${album.id}', '${sub.nome.replace(/'/g, "\\'")}')`}
+                                                    class="group flex flex-col text-left bg-transparent rounded-xl overflow-visible focus:outline-none shrink-0 w-56 md:w-64 snap-start album-item"
+                                                    data-titulo={album.titulo.toLowerCase()}
+                                                    data-subartista={sub.nome.toLowerCase()}
+                                                >
+                                                    <div class="relative w-[80%] aspect-square mb-4 mx-auto shrink-0">
+                                                        <div class="absolute inset-0 bg-gradient-to-br from-stone-800 to-black rounded-full shadow-lg flex items-center justify-center border border-stone-700 transition-all duration-700 ease-out group-hover:translate-x-[55%] group-hover:rotate-180 z-0">
+                                                            <div class="absolute w-[90%] h-[90%] rounded-full border border-white/10"></div>
+                                                            <div class="absolute w-[75%] h-[75%] rounded-full border border-white/10"></div>
+                                                            <div class="absolute w-[60%] h-[60%] rounded-full border border-white/10"></div>
+                                                            <div class="w-[33%] h-[33%] bg-red-700 rounded-full flex items-center justify-center border-[4px] border-[#111] relative overflow-hidden">
+                                                                <div class="absolute w-full h-1/2 top-0 bg-white/10 rounded-t-full"></div>
+                                                                <div class="w-3 h-3 bg-stone-200 rounded-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] z-10 border border-stone-400 relative"></div>
+                                                            </div>
+                                                        </div>
 
-                                    <div id={`data-${album.id}`} class="hidden">
-                                        <span class="data-titulo">{album.titulo}</span>
-                                        <span class="data-ano">{album.ano}</span>
-                                        <span class="data-capa">{album.capa}</span>
-                                        <span class="data-faixas">{JSON.stringify(album.faixas)}</span>
+                                                        <div class="absolute inset-0 z-10 bg-gray-200 rounded-md shadow-md transition-transform duration-700 ease-out group-hover:-translate-x-3 group-hover:shadow-2xl border border-stone-200">
+                                                            <img src={album.capa} alt={album.titulo} class="absolute inset-0 w-full h-full object-cover rounded-md" loading="lazy" />
+                                                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-md flex items-center justify-center">
+                                                                <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="px-4 z-20 relative text-center">
+                                                        <h3 class="font-bold text-gray-800 group-hover:text-rose-700 text-sm md:text-base leading-tight line-clamp-2 transition-colors">
+                                                            {album.titulo}
+                                                        </h3>
+                                                        {album.descricao && album.descricao[lang] && (
+                                                            <p class="text-xs text-stone-400 mt-1 italic line-clamp-1">{album.descricao[lang]}</p>
+                                                        )}
+                                                        <p class="text-xs text-gray-500 mt-2 font-bold tracking-widest flex items-center justify-center gap-1">
+                                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                            {album.ano}
+                                                        </p>
+                                                    </div>
+
+                                                    <div id={`data-${album.id}`} class="hidden">
+                                                        <span class="data-titulo">{album.titulo}</span>
+                                                        <span class="data-ano">{album.ano}</span>
+                                                        <span class="data-capa">{album.capa}</span>
+                                                        <span class="data-faixas">{JSON.stringify(album.faixas)}</span>
+                                                    </div>
+                                                </button>
+                                            ))}
+                                        </div>
+
+                                        <button 
+                                            onclick={`rolarCarrossel('carousel-${index}-${subIndex}', 1)`}
+                                            class="carrossel-btn hidden md:flex absolute right-0 top-[40%] -translate-y-1/2 -mr-4 z-30 bg-white text-rose-700 p-3 rounded-full shadow-lg border border-stone-200 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-rose-50 hover:scale-110 focus:outline-none"
+                                        >
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                                        </button>
                                     </div>
-                                </button>
+                                </div>
                             ))}
                         </div>
-
-                        <button 
-                            onclick={`rolarCarrossel('carousel-${index}', 1)`}
-                            class="carrossel-btn hidden md:flex absolute right-0 top-[40%] -translate-y-1/2 -mr-4 z-30 bg-white text-rose-700 p-3 rounded-full shadow-lg border border-stone-200 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-rose-50 hover:scale-110 focus:outline-none"
-                            aria-label="Rolar para a direita"
-                        >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-                        </button>
-                    </div>
-
+                    )}
                 </section>
             ))}
         </div>
@@ -263,7 +347,7 @@ discografiaFinal.forEach(artista => {
 </Layout>
 
 <script is:inline>
-    // --- LÓGICA DE PESQUISA (NOVA) ---
+    // --- LÓGICA DE PESQUISA ADAPTADA PARA SUB-ARTISTAS ---
     document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('buscaDiscografia');
         const secoesArtistas = document.querySelectorAll('.artista-section');
@@ -283,11 +367,24 @@ discografiaFinal.forEach(artista => {
 
                     albuns.forEach(album => {
                         const tituloAlbum = album.getAttribute('data-titulo');
-                        if (artistaCombina || tituloAlbum.includes(termoBusca)) {
+                        const subArtistaNome = album.getAttribute('data-subartista') || '';
+
+                        if (artistaCombina || tituloAlbum.includes(termoBusca) || subArtistaNome.includes(termoBusca)) {
                             album.style.display = 'flex';
                             encontrouAlbumNaSecao = true;
                         } else {
                             album.style.display = 'none';
+                        }
+                    });
+
+                    // Verifica e oculta/mostra o cabeçalho dos sub-artistas (Música Tradicionalista)
+                    const subGrupos = secao.querySelectorAll('.sub-artista-group');
+                    subGrupos.forEach(grupo => {
+                        const albunsVisiveis = Array.from(grupo.querySelectorAll('.album-item')).filter(a => a.style.display !== 'none');
+                        if (albunsVisiveis.length > 0 || artistaCombina) {
+                            grupo.style.display = 'block';
+                        } else {
+                            grupo.style.display = 'none';
                         }
                     });
 
