@@ -809,7 +809,7 @@ export const discografia = [
   nome: "Música Tradicionalista",
   subArtistas: [
     {
-    nome: "Quarteto Coração de Potro",
+    nome: "1Quarteto Coração de Potro",
     albuns: [
       {
         id: "tempodenafo",
