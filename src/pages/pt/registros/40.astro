@@ -9,17 +9,17 @@ const levino = [
         legenda: 'Olga Praguer Coelho, 1944',
         fonte: 'Jornal Correio do Sul - Laguna - 8 de outubro de 1944'
     },
-{
+    {
         src: '/images/registros/nena47.avif',
         legenda: 'Nena Machado, 1947',
         fonte: 'Jornal A Cidade - Blumenau - 30 de abril de 1947'
     },
-{
+    {
         src: '/images/registros/albormaruenda.avif',
         legenda: 'Albor Maruenda em Blumenau, 1949',
         fonte: 'Jornal A Nação - Blumenau - 19 de agosto de 1949'
     },
-{
+    {
         src: '/images/registros/alfredomelo.avif',
         legenda: 'Alfredo Melo, 1949',
         fonte: 'Jornal A Gazeta - Florianópolis - 27 de agosto de 1949'
@@ -33,7 +33,6 @@ const recortesImprensa = [
         legenda: 'Agustín Barrios apresentando recital em Florianópolis, 1929',
         fonte: 'Jornal Republica - Florianópolis - 17 de agosto de 1929'
     },
-    
 ];
 ---
 
@@ -123,63 +122,39 @@ const recortesImprensa = [
                 </p>
             </div>
 
-            <div class="relative group/section">
-                
-                <button 
-                    id="prev-btn" 
-                    class="absolute left-[-20px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-xl rounded-full p-3 text-red-700 hover:bg-red-700 hover:text-white transition-all opacity-0 group-hover/section:opacity-100 hidden md:block border border-stone-200"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                    </svg>
-                </button>
-
-                <section 
-                    id="scroll-container"
-                    class="flex overflow-x-auto gap-8 pb-4 no-scrollbar snap-x snap-mandatory scroll-smooth"
-                >
-                    {levino.map((registro) => (
-                        <div 
-                            class="gallery-item cursor-pointer bg-white p-4 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)] transform transition hover:-translate-y-1 border border-stone-100 group min-w-[280px] md:min-w-[350px] snap-center"
-                            data-src={registro.src}
-                            data-legenda={registro.legenda}
-                            data-fonte={registro.fonte}
-                        >
-                            <div class="relative overflow-hidden rounded-md mb-4 shadow-sm bg-stone-200">
-                                <img 
-                                    src={registro.src} 
-                                    alt={registro.legenda} 
-                                    class="w-full h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-                                    loading="lazy"
-                                />
-                                
-                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10 md:w-12 md:h-12 text-white">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="px-2">
-                                <p class="text-base md:text-lg font-medium text-stone-800 leading-snug">
-                                    {registro.legenda}
-                                </p>
-                                <p class="text-xs md:text-sm text-stone-500 font-serif italic mt-2">
-                                    Fonte: {registro.fonte}
-                                </p>
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+                {levino.map((registro) => (
+                    <div 
+                        class="gallery-item cursor-pointer bg-white p-4 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)] transform transition hover:-translate-y-1 border border-stone-100 group"
+                        data-src={registro.src}
+                        data-legenda={registro.legenda}
+                        data-fonte={registro.fonte}
+                    >
+                        <div class="relative overflow-hidden rounded-md mb-4 shadow-sm bg-stone-200">
+                            <img 
+                                src={registro.src} 
+                                alt={registro.legenda} 
+                                class="w-full h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                                loading="lazy"
+                            />
+                            
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10 md:w-12 md:h-12 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                </svg>
                             </div>
                         </div>
-                    ))} 
-                </section>
-
-                <button 
-                    id="next-btn" 
-                    class="absolute right-[-20px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-xl rounded-full p-3 text-red-700 hover:bg-red-700 hover:text-white transition-all opacity-0 group-hover/section:opacity-100 hidden md:block border border-stone-200"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                    </svg>
-                </button>
-            </div>
+                        <div class="px-2">
+                            <p class="text-base md:text-lg font-medium text-stone-800 leading-snug">
+                                {registro.legenda}
+                            </p>
+                            <p class="text-xs md:text-sm text-stone-500 font-serif italic mt-2">
+                                Fonte: {registro.fonte}
+                            </p>
+                        </div>
+                    </div>
+                ))} 
+            </section>
         </div>
 
         {/* =========================================
@@ -320,22 +295,6 @@ const recortesImprensa = [
 </style>
 
 <script>
-    const container = document.getElementById('scroll-container');
-    const nextBtn = document.getElementById('next-btn');
-    const prevBtn = document.getElementById('prev-btn');
-
-    if (container && nextBtn && prevBtn) {
-        const scrollAmount = 350 + 32; 
-
-        nextBtn.addEventListener('click', () => {
-            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        });
-
-        prevBtn.addEventListener('click', () => {
-            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        });
-    }
-
     const modal = document.getElementById('imageModal');
     const modalContent = document.getElementById('modalContent');
     const modalImg = document.getElementById('modalImage'); 
