@@ -26,34 +26,58 @@ const levino = [
     }
 ];
 
-// 2. DADOS: Nova galeria de Recortes de Imprensa
+// 2. DADOS: Nova galeria do Turíbio Santos
+const turibio = [
+    {
+        src: '/images/registros/turibio73.avif', // Substitua pelos seus caminhos reais
+        legenda: 'Turíbio Santos se apresentando em Florianópolis, 1973',
+        fonte: 'O Estado - Florianópolis - 29 de setembro de 1973'
+    },
+    {
+        src: '/images/registros/turibio2.avif', // Substitua
+        legenda: 'Turíbio Santos em concerto',
+        fonte: 'Acervo Histórico'
+    },
+    {
+        src: '/images/registros/turibio3.avif', // Substitua
+        legenda: 'Apresentação no Teatro',
+        fonte: 'Acervo Histórico'
+    },
+    {
+        src: '/images/registros/turibio4.avif', // Substitua
+        legenda: 'Entrevista concedida à imprensa local',
+        fonte: 'Acervo Histórico'
+    }
+];
+
+// 3. DADOS: Nova galeria de Recortes de Imprensa
 const recortesImprensa = [
     {
         src: '/images/registros/duoassad71.avif', // Substitua pelos seus caminhos reais
         legenda: 'Duo Assad se apresentando em Florianópolis, 1971',
         fonte: 'O Estado - Florianópolis - 17 de fevereiro de 1971'
     },
-  {
+    {
         src: '/images/registros/turibio73.avif', // Substitua pelos seus caminhos reais
         legenda: 'Turíbio Santos se apresentando em Florianópolis, 1973',
         fonte: 'O Estado - Florianópolis - 29 de setembro de 1973'
     },
-{
+    {
         src: '/images/registros/edino1977.avif', // Substitua pelos seus caminhos reais
         legenda: 'Reportagem Edino Krieger, 1977',
         fonte: 'O Estado - Florianópolis -  18 de junho de 1977'
     },
-{
+    {
         src: '/images/registros/alvarop1978.avif', // Substitua pelos seus caminhos reais
         legenda: 'Alvaro Pierri se apresentando em Florianópolis, 1978',
         fonte: 'O Estado - Florianópolis - 9 de setembro de 1978'
     },
-{
+    {
         src: '/images/registros/leon1978.avif', // Substitua pelos seus caminhos reais
         legenda: 'Leon Martinez se apresentando em Florianópolis, 1978',
         fonte: 'O Estado - Florianópolis - 15 de setembro de 1978'
     },
-{
+    {
         src: '/images/registros/baden1979.avif', // Substitua pelos seus caminhos reais
         legenda: 'Baden Powel se apresentando em Florianópolis, 1979',
         fonte: 'O Estado - Florianópolis - 6 de outubro de 1979'
@@ -212,7 +236,86 @@ const recortesImprensa = [
         </div>
 
         {/* =========================================
-            SEÇÃO 2: RECORTES DE IMPRENSA (NOVA) 
+            SEÇÃO 2: Turíbio Santos (Com Carrossel de Setas)
+        ========================================== */}
+        <div>
+            <div class="mb-10 text-center">
+                <h2 class="flex items-center gap-4 text-xl md:text-2xl font-semibold text-red-700 font-['Cinzel'] tracking-wide uppercase">
+                    <span class="h-px flex-1 bg-gradient-to-r from-transparent to-red-700"></span>
+                    <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] whitespace-nowrap">
+                        Turíbio Santos
+                    </span>
+                    <span class="h-px flex-1 bg-gradient-to-l from-transparent to-red-700"></span>
+                </h2>
+                <p class="text-lg text-stone-500 font-serif italic mt-3 max-w-2xl mx-auto">
+                    Apresentações marcantes e passagens históricas do mestre Turíbio Santos por Santa Catarina.
+                </p>
+            </div>
+
+            {/* Container com Botões e Rolagem */}
+            <div class="relative group/section">
+                
+                {/* Botão Esquerdo */}
+                <button 
+                    id="prev-btn-turibio" 
+                    class="absolute left-[-20px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-xl rounded-full p-3 text-red-700 hover:bg-red-700 hover:text-white transition-all opacity-0 group-hover/section:opacity-100 hidden md:block border border-stone-200"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+
+                {/* Lista de Imagens */}
+                <section 
+                    id="scroll-container-turibio"
+                    class="flex overflow-x-auto gap-8 pb-4 no-scrollbar snap-x snap-mandatory scroll-smooth"
+                >
+                    {turibio.map((registro) => (
+                        <div 
+                            class="gallery-item cursor-pointer bg-white p-4 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)] transform transition hover:-translate-y-1 border border-stone-100 group min-w-[280px] md:min-w-[350px] snap-center"
+                            data-src={registro.src}
+                            data-legenda={registro.legenda}
+                            data-fonte={registro.fonte}
+                        >
+                            <div class="relative overflow-hidden rounded-md mb-4 shadow-sm bg-stone-200">
+                                <img 
+                                    src={registro.src} 
+                                    alt={registro.legenda} 
+                                    class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12 text-white">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <p class="text-lg font-medium text-stone-800 leading-snug h-14 line-clamp-2">
+                                    {registro.legenda}
+                                </p>
+                                <p class="text-sm text-stone-500 font-serif italic mt-2">
+                                    Fonte: {registro.fonte}
+                                </p>
+                            </div>
+                        </div>
+                    ))} 
+                </section>
+
+                {/* Botão Direito */}
+                <button 
+                    id="next-btn-turibio" 
+                    class="absolute right-[-20px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-xl rounded-full p-3 text-red-700 hover:bg-red-700 hover:text-white transition-all opacity-0 group-hover/section:opacity-100 hidden md:block border border-stone-200"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+
+        {/* =========================================
+            SEÇÃO 3: RECORTES DE IMPRENSA (NOVA) 
         ========================================== */}
         
             <div class="mt-16">
@@ -349,7 +452,7 @@ const recortesImprensa = [
     .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
 
     /* =========================================
-       TAMANHO DO ÍCONE DE JORNAIS
+        TAMANHO DO ÍCONE DE JORNAIS
     ========================================== */
     .newspaper-icon {
         width: 70px;
@@ -363,7 +466,7 @@ const recortesImprensa = [
 
 <script>
     // =========================================
-    // LÓGICA DO CARROSSEL DE SETAS
+    // LÓGICA DO CARROSSEL DE SETAS (Darcy Villa Verde)
     // =========================================
     const container = document.getElementById('scroll-container');
     const nextBtn = document.getElementById('next-btn');
@@ -379,6 +482,25 @@ const recortesImprensa = [
 
         prevBtn.addEventListener('click', () => {
             container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+    }
+
+    // =========================================
+    // LÓGICA DO CARROSSEL DE SETAS (Turíbio Santos)
+    // =========================================
+    const containerTuribio = document.getElementById('scroll-container-turibio');
+    const nextBtnTuribio = document.getElementById('next-btn-turibio');
+    const prevBtnTuribio = document.getElementById('prev-btn-turibio');
+
+    if (containerTuribio && nextBtnTuribio && prevBtnTuribio) {
+        const scrollAmountTuribio = 350 + 32; 
+
+        nextBtnTuribio.addEventListener('click', () => {
+            containerTuribio.scrollBy({ left: scrollAmountTuribio, behavior: 'smooth' });
+        });
+
+        prevBtnTuribio.addEventListener('click', () => {
+            containerTuribio.scrollBy({ left: -scrollAmountTuribio, behavior: 'smooth' });
         });
     }
 
