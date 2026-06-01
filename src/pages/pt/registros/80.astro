@@ -7,7 +7,8 @@ const levino = [
     {
         src: '/images/registros/duoabreuflauta.avif',
         legenda: 'Duo Sérgio Abreu e Norton Morozowicz, Flauta e Violão. 25 de Março 1981.',
-        fonte: 'Blumenau em Cadernos - Blumenau - Edição 04, março de 1981'
+        fonte: 'Blumenau em Cadernos - Blumenau - Edição 04, março de 1981',
+        baseZoom: 20 // Adicionado zoom base menor especificamente para esta imagem
     },
     {
         src: '/images/registros/ricardo180.avif',
@@ -24,7 +25,7 @@ const levino = [
         legenda: 'Recital de Eduardo Castañera em Florianópolis',
         fonte: 'Jornal Diário Catarinense - Florianópolis - 2 de setembro de 1986'
     },
-{
+    {
         src: '/images/registros/rufinoregis.avif',
         legenda: 'Rufino Régis lançando LP em Indaial',
         fonte: 'Jornal Gazeta de Indaial - Indaial - 3 a 10 de setembro de 1987'
@@ -43,12 +44,12 @@ const levino = [
 
 // 2. DADOS: Década 90
 const recortesImprensa = [
-{
+    {
         src: '/images/registros/darcyscar.avif',
         legenda: 'Darcy Villa Verde se apresentando na SCAR',
         fonte: 'Jornal Correio do Povo - Jaraguá do Sul - 17 de Julho de 1993'
     },   
-{
+    {
         src: '/images/registros/everton1994.avif',
         legenda: 'Everton Gloeden, 1 de novembro de 1993',
         fonte: 'Blumenau em Cadernos - Blumenau - Edição 01, Janeiro de 1994'
@@ -63,12 +64,12 @@ const recortesImprensa = [
         legenda: 'Sebastião Japajós na Praça Ângelo Piazera',
         fonte: 'Jornal Correio do Povo - Jaraguá do Sul - 12 de Abril de 1995'
     },
-     {
+    {
         src: '/images/registros/concursocanoinhas.avif',
         legenda: 'Concurso de Violão em Canoinhas',
         fonte: 'Jornal Correio do Norte -  Canoinhas - 02 de Junho de 1995'
     },
-     {
+    {
         src: '/images/registros/renatomor96.avif',
         legenda: 'Renato Mor, 3 de Julho de 1996',
         fonte: 'Blumenau em Cadernos -  Blumenau - Edição 08, Agosto de 1996'
@@ -102,7 +103,6 @@ const recortesImprensa = [
                 <stop offset="0%" stop-color="#f5f5f4" />
                 <stop offset="100%" stop-color="#e7e5e4" />
             </linearGradient>
-            {/* Filtro de sombra para separar as folhas */}
             <filter id="paperShadow" x="-10%" y="-10%" width="120%" height="120%">
                 <feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.3"/>
             </filter>
@@ -182,6 +182,7 @@ const recortesImprensa = [
                         data-src={registro.src}
                         data-legenda={registro.legenda}
                         data-fonte={registro.fonte}
+                        data-base-zoom={registro.baseZoom || 45}
                     >
                         <div class="relative overflow-hidden rounded-md mb-4 shadow-sm bg-stone-200">
                             <img 
@@ -308,7 +309,6 @@ const recortesImprensa = [
                 </div>
 
                 {/* Área rolável (Scroll) da imagem */}
-                {/* Removido o 'flex items-center justify-center' para evitar o corte no topo */}
                 <div id="imageWrapper" class="w-full overflow-auto max-h-[70vh] border border-stone-200 bg-stone-50 text-center custom-scrollbar rounded-md shadow-inner pt-2">
                     <img 
                         id="modalImage" 
@@ -422,6 +422,7 @@ const recortesImprensa = [
             const src = item.getAttribute('data-src');
             const legenda = item.getAttribute('data-legenda');
             const fonte = item.getAttribute('data-fonte');
+            const customZoom = parseInt(item.getAttribute('data-base-zoom')) || 45; // Lê o zoom base individual da imagem
             
             // Verifica se clicou em uma imagem da seção de 90
             const is90s = item.closest('#galeria-90') !== null;
@@ -432,16 +433,16 @@ const recortesImprensa = [
                 
                 if (is90s) {
                     // MODO DÉCADA DE 90: Responsivo, sem zoom, botões ocultos
-                    // O inline-block aqui ajuda o text-center do pai a centralizar
                     modalImg.className = "max-w-full max-h-[85vh] w-auto h-auto object-contain shadow-sm border border-stone-200 inline-block align-middle";
-                    modalImg.style.height = 'auto'; // Remove a altura forçada do zoom
-                    if (zoomTools) zoomTools.style.display = 'none'; // Esconde as lupas
+                    modalImg.style.height = 'auto'; 
+                    if (zoomTools) zoomTools.style.display = 'none'; 
                 } else {
-                    // MODO DÉCADA DE 80: Com Zoom, botões visíveis
+                    // MODO DÉCADA DE 80: Com Zoom customizado, botões visíveis
                     modalImg.className = "max-w-none inline-block transition-[height] duration-700 ease-in-out align-top";
+                    baseHeight = customZoom; // Aplica a altura customizada para não estourar a imagem
                     currentHeight = baseHeight;
                     applyZoom();
-                    if (zoomTools) zoomTools.style.display = 'flex'; // Mostra as lupas
+                    if (zoomTools) zoomTools.style.display = 'flex'; 
                 }
             }
             
