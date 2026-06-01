@@ -1,69 +1,114 @@
 ---
-// Importando o seu Layout
+// Importing your Layout
 import Layout from '../../../layouts/Layout.astro';
 
-// 1. DADOS: Década 80
+// 1. DATA: 80s Decade
 const levino = [
     {
+        src: '/images/registros/duoabreuflauta.avif',
+        legenda: 'Sérgio Abreu and Norton Morozowicz Duo, Flute and Guitar. March 25, 1981.',
+        fonte: 'Blumenau em Cadernos - Blumenau - Edition 04, March 1981'
+    },
+    {
         src: '/images/registros/ricardo180.avif',
-        legenda: 'Ricardo Boppré announces a course and a new LP',
-        fonte: 'Newspaper Diário Catarinense - Florianópolis - June 4, 1986'
+        legenda: 'Ricardo Boppré promotes course and new LP',
+        fonte: 'Diário Catarinense Newspaper - Florianópolis - June 4, 1986'
     },
     {
         src: '/images/registros/2seminario.avif',
-        legenda: '2nd Joinville Guitar Seminar',
-        fonte: 'Newspaper Diário Catarinense - Florianópolis - June 30, 1986'
+        legenda: '2nd Guitar Seminar in Joinville',
+        fonte: 'Diário Catarinense Newspaper - Florianópolis - June 30, 1986'
     },
     {
         src: '/images/registros/eduardocasta1.avif',
-        legenda: 'Eduardo Castañera’s recital in Florianópolis',
-        fonte: 'Newspaper Diário Catarinense - Florianópolis - September 2, 1986'
+        legenda: 'Eduardo Castañera\'s Recital in Florianópolis',
+        fonte: 'Diário Catarinense Newspaper - Florianópolis - September 2, 1986'
     },
 {
         src: '/images/registros/rufinoregis.avif',
         legenda: 'Rufino Régis releasing LP in Indaial',
-        fonte: 'Newspaper Gazeta de Indaial - Indaial - September 3-10, 1987'
+        fonte: 'Gazeta de Indaial Newspaper - Indaial - September 3 to 10, 1987'
+    },
+    {
+        src: '/images/registros/egbertocic.avif',
+        legenda: 'Egberto Gismonti releasing album at a show in the CIC',
+        fonte: 'Zero SC Newspaper - Florianópolis - August 1988'
+    },
+    {
+        src: '/images/registros/jorgecic.avif',
+        legenda: 'Jorge Mautner performing at the CIC',
+        fonte: 'Zero SC Newspaper - Florianópolis - April 1989'
     },
 ];
 
-// 2. DADOS: Década 90
+// 2. DATA: 90s Decade
 const recortesImprensa = [
-   {
-        src: '/images/registros/everton1994.avif', // Substitua pelos seus caminhos reais
-        legenda: 'Everton Gloeden. November 1, 1993',
-        fonte: 'Newspaper Blumenau em Cadernos - January, 1994'
+{
+        src: '/images/registros/darcyscar.avif',
+        legenda: 'Darcy Villa Verde performing at SCAR',
+        fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - July 17, 1993'
+    },   
+{
+        src: '/images/registros/everton1994.avif',
+        legenda: 'Everton Gloeden, November 1, 1993',
+        fonte: 'Blumenau em Cadernos - Blumenau - Edition 01, January 1994'
     },
     {
-        src: '/images/registros/duoeuropa94.avif', // Substitua pelos seus caminhos reais
-        legenda: 'European Guitar Duo. May 3, 1994',
-        fonte: 'Newspaper Blumenau em Cadernos - July, 1994'
+        src: '/images/registros/duoeuropa94.avif',
+        legenda: 'European Guitar Duo, May 3, 1994',
+        fonte: 'Blumenau em Cadernos -  Blumenau - July 1994'
+    },
+    {
+        src: '/images/registros/sebastiaopraça.avif',
+        legenda: 'Sebastião Japajós in Ângelo Piazera Square',
+        fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - April 12, 1995'
+    },
+     {
+        src: '/images/registros/concursocanoinhas.avif',
+        legenda: 'Guitar Competition in Canoinhas',
+        fonte: 'Correio do Norte Newspaper -  Canoinhas - June 02, 1995'
+    },
+     {
+        src: '/images/registros/renatomor96.avif',
+        legenda: 'Renato Mor, July 3, 1996',
+        fonte: 'Blumenau em Cadernos -  Blumenau - Edition 08, August 1996'
+    },
+    {
+        src: '/images/registros/floripajazz.avif',
+        legenda: 'Florianópolis in Jazz',
+        fonte: 'Zero SC Newspaper - Florianópolis - November 1996'
+    },
+    {
+        src: '/images/registros/fabioadour.avif',
+        legenda: 'Fábio Adour\'s Recital in Blumenau',
+        fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - September 11, 1998'
     },
 ];
 ---
 
-<Layout title="Violão Catarinense">
+<Layout title="Santa Catarina Guitar">
     
     <div class="max-w-6xl mx-auto py-16 px-6 space-y-24">
 
-          {/* =========================================
-    CABEÇALHO PRINCIPAL
+         {/* =========================================
+     MAIN HEADER
 ========================================== */}
 <div class="flex items-center justify-center gap-4 md:gap-6 py-4">
     
-    {/* Ícone Estático: Pilha de Jornais */}
+    {/* Static Icon: Stack of Newspapers */}
     <svg viewBox="0 0 100 100" class="newspaper-icon shrink-0">
         <defs>
             <linearGradient id="pageGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#f5f5f4" />
                 <stop offset="100%" stop-color="#e7e5e4" />
             </linearGradient>
-            {/* Filtro de sombra para separar as folhas */}
+            {/* Shadow filter to separate the pages */}
             <filter id="paperShadow" x="-10%" y="-10%" width="120%" height="120%">
                 <feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.3"/>
             </filter>
         </defs>
 
-        {/* JORNAL 1 (Base da pilha - levemente rotacionado para a esquerda) */}
+        {/* NEWSPAPER 1 */}
         <g transform="rotate(-8 50 50) translate(-2, 4)" filter="url(#paperShadow)">
             <rect x="10" y="10" width="80" height="80" rx="2" fill="url(#pageGrad)" stroke="#a8a29e" stroke-width="0.5"/>
             <rect x="20" y="25" width="60" height="4" rx="0.5" fill="#a8a29e"/>
@@ -74,7 +119,7 @@ const recortesImprensa = [
             <rect x="20" y="57" width="45" height="1.5" rx="0.2" fill="#d6d3d1"/>
         </g>
         
-        {/* JORNAL 2 (Meio da pilha - rotacionado para a direita) */}
+        {/* NEWSPAPER 2 */}
         <g transform="rotate(6 50 50) translate(3, -2)" filter="url(#paperShadow)">
             <rect x="10" y="10" width="80" height="80" rx="2" fill="url(#pageGrad)" stroke="#a8a29e" stroke-width="0.5"/>
             <rect x="20" y="25" width="30" height="4" rx="0.5" fill="#a8a29e"/>
@@ -85,7 +130,7 @@ const recortesImprensa = [
             <rect x="20" y="53" width="50" height="1.5" rx="0.2" fill="#d6d3d1"/>
         </g>
 
-        {/* JORNAL 3 (Topo da pilha - quase reto, destaque em vermelho escuro) */}
+        {/* NEWSPAPER 3 */}
         <g transform="rotate(-2 50 50) translate(0, 0)" filter="url(#paperShadow)">
             <rect x="10" y="10" width="80" height="80" rx="2" fill="url(#pageGrad)" stroke="#991b1b" stroke-width="1"/>
             <rect x="20" y="25" width="60" height="6" rx="0.5" fill="#7f1d1d"/>
@@ -97,7 +142,7 @@ const recortesImprensa = [
         </g>
     </svg>
     
-    {/* Bloco de Texto (Título + Subtítulo agrupados) */}
+    {/* Text Block */}
     <div class="flex flex-col items-start">
         <h1 class="text-4xl md:text-5xl font-bold text-red-700 font-['Cinzel'] uppercase tracking-tight mb-0">
             <span class="relative after:absolute after:bottom-2 after:left-0 after:w-full after:h-[2px] after:bg-red-700">
@@ -106,7 +151,7 @@ const recortesImprensa = [
         </h1>
         
         <p class="text-xl text-stone-600 mt-1 font-serif italic text-left max-w-lg leading-snug">
-            Excerpts from the History of the Classical Guitar in Santa Catarina from the 1980s to the 1990s
+            Clippings of the Guitar's Trajectory in Santa Catarina in the 1980s and 1990s
         </p>
     </div>
 
@@ -115,14 +160,14 @@ const recortesImprensa = [
 
 
         {/* =========================================
-            SEÇÃO 1: Década de 80
+            SECTION 1: 80s Decade
         ========================================== */}
         <div>
             <div class="mb-10 text-center">
                 <h2 class="flex items-center gap-4 text-xl md:text-2xl font-semibold text-red-700 font-['Cinzel'] tracking-wide uppercase">
                     <span class="h-px flex-1 bg-gradient-to-r from-transparent to-red-700"></span>
                     <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] whitespace-nowrap">
-                        The 1980s
+                        80s Decade
                     </span>
                     <span class="h-px flex-1 bg-gradient-to-l from-transparent to-red-700"></span>
                 </h2>
@@ -131,10 +176,7 @@ const recortesImprensa = [
                 </p>
             </div>
 
-            {/* Container com Botões e Rolagem */}
             <div class="relative group/section">
-                
-                {/* Botão Esquerdo */}
                 <button 
                     id="prev-btn" 
                     class="absolute left-[-20px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-xl rounded-full p-3 text-red-700 hover:bg-red-700 hover:text-white transition-all opacity-0 group-hover/section:opacity-100 hidden md:block border border-stone-200"
@@ -144,7 +186,6 @@ const recortesImprensa = [
                     </svg>
                 </button>
 
-                {/* Lista de Imagens */}
                 <section 
                     id="scroll-container"
                     class="flex overflow-x-auto gap-8 pb-4 no-scrollbar snap-x snap-mandatory scroll-smooth"
@@ -180,7 +221,6 @@ const recortesImprensa = [
                     ))} 
                 </section>
 
-                {/* Botão Direito */}
                 <button 
                     id="next-btn" 
                     class="absolute right-[-20px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-xl rounded-full p-3 text-red-700 hover:bg-red-700 hover:text-white transition-all opacity-0 group-hover/section:opacity-100 hidden md:block border border-stone-200"
@@ -194,7 +234,7 @@ const recortesImprensa = [
         </div>
 
         {/* =========================================
-            SEÇÃO 2: Década de 90 
+            SECTION 2: 90s Decade 
         ========================================== */}
         
         <div class="mt-16">
@@ -202,7 +242,7 @@ const recortesImprensa = [
                 <h2 class="flex items-center gap-4 text-xl md:text-2xl font-semibold text-red-700 font-['Cinzel'] tracking-wide uppercase">
                     <span class="h-px flex-1 bg-gradient-to-r from-transparent to-red-700"></span>
                     <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] whitespace-nowrap">
-                        The 1990s
+                        90s Decade
                     </span>
                     <span class="h-px flex-1 bg-gradient-to-l from-transparent to-red-700"></span>
                 </h2>
@@ -211,7 +251,6 @@ const recortesImprensa = [
                 </p>
             </div>
 
-            {/* ADICIONADO ID: galeria-90 para identificar as imagens desta seção (Sem Zoom) */}
             <section id="galeria-90" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {recortesImprensa.map((recorte) => (
                     <div 
@@ -248,8 +287,9 @@ const recortesImprensa = [
 
     </div>
 
+
     {/* =========================================
-        MODAL (A JANELA QUE ABRE A FOTO GRANDE)
+        MODAL (THE WINDOW THAT OPENS THE LARGE PHOTO)
     ========================================== */}
     <div id="imageModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300 p-4">
         
@@ -261,28 +301,28 @@ const recortesImprensa = [
 
         <div id="modalContent" class="bg-white p-4 md:p-6 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full max-w-5xl max-h-[95vh] flex flex-col items-center transform scale-95 transition-transform duration-300">
             
-            {/* CONTAINER DA IMAGEM E CONTROLES FLUTUANTES */}
+            {/* IMAGE CONTAINER AND FLOATING CONTROLS */}
             <div class="relative w-full group">
                 
-                {/* Grupo: Dica + Controles de Zoom */}
+                {/* Group: Hint + Zoom Controls */}
                 <div id="zoomTools" class="absolute bottom-6 right-6 z-10 flex flex-col items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     
-                    {/* Dica do teclado apenas no Desktop */}
+                    {/* Keyboard hint only on Desktop */}
                     <span class="text-[10px] font-bold text-stone-500 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm border border-stone-200 uppercase tracking-wider hidden md:block select-none">
                         Ctrl + Scroll
                     </span>
 
-                    {/* Controles de Zoom Flutuantes (Lupas) */}
+                    {/* Floating Zoom Controls (Magnifying Glasses) */}
                     <div class="flex items-center gap-3 bg-white/95 backdrop-blur-md p-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.2)] border border-stone-200 transition-all">
                         
-                        {/* Lupa Menor (-) */}
+                        {/* Smaller Magnifying Glass (-) */}
                         <button id="zoomOutBtn" class="w-10 h-10 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-stone-600 rounded-full shadow-inner border border-stone-200 transition-transform active:scale-90" title="Zoom Out">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6" />
                             </svg>
                         </button>
 
-                        {/* Lupa Maior (+) */}
+                        {/* Larger Magnifying Glass (+) */}
                         <button id="zoomInBtn" class="w-14 h-14 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-red-700 rounded-full shadow-md border border-stone-200 transition-transform active:scale-90" title="Zoom In">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-7 h-7">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
@@ -292,7 +332,8 @@ const recortesImprensa = [
                     </div>
                 </div>
 
-                {/* Área rolável (Scroll) da imagem */}
+                {/* Scrollable area (Scroll) for the image */}
+                {/* Removed 'flex items-center justify-center' to avoid clipping at the top */}
                 <div id="imageWrapper" class="w-full overflow-auto max-h-[70vh] border border-stone-200 bg-stone-50 text-center custom-scrollbar rounded-md shadow-inner pt-2">
                     <img 
                         id="modalImage" 
@@ -338,7 +379,7 @@ const recortesImprensa = [
 
 <script>
     // =========================================
-    // LÓGICA DO CARROSSEL DE SETAS (80s)
+    // ARROW CAROUSEL LOGIC (80s)
     // =========================================
     const container = document.getElementById('scroll-container');
     const nextBtn = document.getElementById('next-btn');
@@ -357,7 +398,7 @@ const recortesImprensa = [
     }
 
     // =========================================
-    // LÓGICA DO MODAL & ZOOM
+    // MODAL & ZOOM LOGIC
     // =========================================
     const modal = document.getElementById('imageModal');
     const modalContent = document.getElementById('modalContent');
@@ -369,13 +410,13 @@ const recortesImprensa = [
     const imageWrapper = document.getElementById('imageWrapper'); 
     const zoomTools = document.getElementById('zoomTools');
 
-    // Variáveis do Zoom
+    // Zoom Variables
     let baseHeight = 45; 
     let currentHeight = baseHeight;
     const buttonZoomStep = 25; 
     const scrollZoomStep = 10;
     
-    // Flag para saber se a imagem atual permite zoom (false para a década de 90)
+    // Flag to check if current image allows zoom (false for the 90s)
     let isCurrentZoomable = true;
 
     function applyZoom() {
@@ -384,7 +425,7 @@ const recortesImprensa = [
         }
     }
 
-    // Eventos dos Botões de Zoom
+    // Zoom Button Events
     const zoomInBtn = document.getElementById('zoomInBtn');
     const zoomOutBtn = document.getElementById('zoomOutBtn');
 
@@ -404,7 +445,7 @@ const recortesImprensa = [
         });
     }
 
-    // Evento de Scroll (Mouse Wheel)
+    // Scroll Event (Mouse Wheel)
     if (imageWrapper) {
         imageWrapper.addEventListener('wheel', (e) => {
             if (isCurrentZoomable && (e.ctrlKey || e.metaKey)) {
@@ -419,14 +460,14 @@ const recortesImprensa = [
         }, { passive: false }); 
     }
 
-    // Abrir Modal
+    // Open Modal
     galleryItems.forEach(item => {
         item.addEventListener('click', () => {
             const src = item.getAttribute('data-src');
             const legenda = item.getAttribute('data-legenda');
             const fonte = item.getAttribute('data-fonte');
             
-            // Verifica se clicou em uma imagem da seção de 90
+            // Checks if a 90s section image was clicked
             const is90s = item.closest('#galeria-90') !== null;
             isCurrentZoomable = !is90s;
 
@@ -434,16 +475,17 @@ const recortesImprensa = [
                 modalImg.src = src || '';
                 
                 if (is90s) {
-                    // MODO DÉCADA DE 90: Responsivo, sem zoom, botões ocultos
+                    // 90s DECADE MODE: Responsive, no zoom, hidden buttons
+                    // The inline-block here helps the parent's text-center to align it
                     modalImg.className = "max-w-full max-h-[85vh] w-auto h-auto object-contain shadow-sm border border-stone-200 inline-block align-middle";
-                    modalImg.style.height = 'auto'; // Remove a altura forçada do zoom
-                    if (zoomTools) zoomTools.style.display = 'none'; // Esconde as lupas
+                    modalImg.style.height = 'auto'; // Removes the forced zoom height
+                    if (zoomTools) zoomTools.style.display = 'none'; // Hides the magnifying glasses
                 } else {
-                    // MODO DÉCADA DE 80: Com Zoom, botões visíveis
+                    // 80s DECADE MODE: With Zoom, visible buttons
                     modalImg.className = "max-w-none inline-block transition-[height] duration-700 ease-in-out align-top";
                     currentHeight = baseHeight;
                     applyZoom();
-                    if (zoomTools) zoomTools.style.display = 'flex'; // Mostra as lupas
+                    if (zoomTools) zoomTools.style.display = 'flex'; // Shows the magnifying glasses
                 }
             }
             
@@ -461,7 +503,7 @@ const recortesImprensa = [
         });
     });
 
-    // Fechar Modal
+    // Close Modal
     const fecharModal = () => {
         modal?.classList.add('opacity-0');
         modalContent?.classList.remove('scale-100');
