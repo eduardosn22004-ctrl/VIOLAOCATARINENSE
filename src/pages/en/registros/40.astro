@@ -1,102 +1,102 @@
 ---
-// Importando o seu Layout
+// Importing your Layout
 import Layout from '../../../layouts/Layout.astro';
 
-// 1. DADOS: Galeria do Levino
+// 1. DATA: Levino's Gallery
 const levino = [
     {
         src: '/images/registros/leobap941.avif',
         legenda: 'Léo Batista, 1941',
-        fonte: 'Jornal O Estado - Florianópolis - 15 de setembro de 1941'
+        fonte: 'Jornal O Estado - Florianópolis - September 15, 1941'
     },
     {
         src: '/images/registros/leobap44.avif',
         legenda: 'Léo Batista, 1941',
-        fonte: 'Jornal A Gazeta - Florianópolis - 20 de setembro de 1941'
+        fonte: 'Jornal A Gazeta - Florianópolis - September 20, 1941'
     },
     {
         src: '/images/registros/intabajara.avif',
-        legenda: 'Índios Tabajaras, 1944',
-        fonte: 'Jornal A Gazeta - Florianópolis - 6 de agosto de 1944'
+        legenda: 'Tabajara Indians, 1944',
+        fonte: 'Jornal A Gazeta - Florianópolis - August 6, 1944'
     },
       {
         src: '/images/registros/olgapra1709.avif',
         legenda: 'Olga Praguer Coelho, 1944',
-        fonte: 'Jornal Correio do Sul - Laguna - 17 de setembro de 1944'
+        fonte: 'Jornal Correio do Sul - Laguna - September 17, 1944'
     },
     {
         src: '/images/registros/olgapra710.avif',
         legenda: 'Olga Praguer Coelho, 1944',
-        fonte: 'Jornal A Gazeta - Florianópolis - 7 de outubro de 1944'
+        fonte: 'Jornal A Gazeta - Florianópolis - October 7, 1944'
     },
     {
         src: '/images/registros/olgapra.avif',
         legenda: 'Olga Praguer Coelho, 1944',
-        fonte: 'Jornal Correio do Sul - Laguna - 8 de outubro de 1944'
+        fonte: 'Jornal Correio do Sul - Laguna - October 8, 1944'
     },  
     {
         src: '/images/registros/nena47.avif',
         legenda: 'Nena Machado, 1947',
-        fonte: 'Jornal A Cidade - Blumenau - 30 de abril de 1947'
+        fonte: 'Jornal A Cidade - Blumenau - April 30, 1947'
     },
      {
         src: '/images/registros/nena947.avif',
         legenda: 'Nena Machado, 1947',
-        fonte: 'Jornal O Estado - Florianópolis - 09 de maio de 1947'
+        fonte: 'Jornal O Estado - Florianópolis - May 09, 1947'
     },
     {
         src: '/images/registros/dulcidio.avif',
         legenda: 'Dulcidio de Oliveira, 1948',
-        fonte: 'Jornal Correio do Norte - Canoinhas - 04 de março de 1948'
+        fonte: 'Jornal Correio do Norte - Canoinhas - March 04, 1948'
     },
     {
         src: '/images/registros/proliveira2.avif',
-        legenda: 'Professor Oliveira, Artista de um braço só. 1948',
-        fonte: 'Jornal O Estado - Florianópolis - 16 de maio de 1947'
+        legenda: 'Professor Oliveira, one-armed artist. 1948',
+        fonte: 'Jornal O Estado - Florianópolis - May 16, 1947'
     },
       {
         src: '/images/registros/proliveira1.avif',
-        legenda: 'Professor Oliveira, Artista de um braço só. 1948',
-        fonte: 'Jornal O Estado - Florianópolis - 19 de maio de 1947'
+        legenda: 'Professor Oliveira, one-armed artist. 1948',
+        fonte: 'Jornal O Estado - Florianópolis - May 19, 1947'
     },
     
     {
         src: '/images/registros/albormaruenda98.avif',
-        legenda: 'Albor Maruenda em Florianópolis, 1949',
-        fonte: 'Jornal O Estado - Florianópolis - 09 de agosto de 1949'
+        legenda: 'Albor Maruenda in Florianópolis, 1949',
+        fonte: 'Jornal O Estado - Florianópolis - August 09, 1949'
     },
     {
         src: '/images/registros/albormaruenda.avif',
-        legenda: 'Albor Maruenda em Blumenau, 1949',
-        fonte: 'Jornal A Nação - Blumenau - 19 de agosto de 1949'
+        legenda: 'Albor Maruenda in Blumenau, 1949',
+        fonte: 'Jornal A Nação - Blumenau - August 19, 1949'
     },
     {
         src: '/images/registros/alfredomelo.avif',
         legenda: 'Alfredo Melo, 1949',
-        fonte: 'Jornal A Gazeta - Florianópolis - 27 de agosto de 1949'
+        fonte: 'Jornal A Gazeta - Florianópolis - August 27, 1949'
     },
 ];
 
-// 2. DADOS: Nova galeria de Recortes de Imprensa
+// 2. DATA: New Press Clippings gallery
 const recortesImprensa = [
     {
         src: '/images/registros/abarrios.avif',
-        legenda: 'Agustín Barrios apresentando recital em Florianópolis, 1929',
-        fonte: 'Jornal Republica - Florianópolis - 17 de agosto de 1929'
+        legenda: 'Agustín Barrios presenting a recital in Florianópolis, 1929',
+        fonte: 'Jornal Republica - Florianópolis - August 17, 1929'
     },
 ];
 ---
 
-<Layout title="Violão Catarinense">
+<Layout title="Santa Catarina Guitar">
     
     <div class="max-w-6xl mx-auto py-16 px-4 md:px-6 space-y-24">
 
         {/* =========================================
-            CABEÇALHO PRINCIPAL
+            MAIN HEADER
         ========================================== */}
         <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 py-4 text-center md:text-left">
             
-            {/* Ícone Estático: Pilha de Jornais */}
+            {/* Static Icon: Stack of Newspapers */}
             <svg viewBox="0 0 100 100" class="newspaper-icon shrink-0">
                 <defs>
                     <linearGradient id="pageGrad" x1="0" y1="0" x2="0" y2="1">
@@ -142,18 +142,18 @@ const recortesImprensa = [
             <div class="flex flex-col items-center md:items-start">
                 <h1 class="text-3xl md:text-5xl font-bold text-red-700 font-['Cinzel'] uppercase tracking-tight mb-0">
                     <span class="relative pb-1 md:pb-0 after:absolute after:bottom-0 md:after:bottom-2 after:left-0 after:w-full after:h-[2px] after:bg-red-700 block md:inline">
-                     Registros Históricos
+                     Historical Records
                     </span>
                 </h1>
                 
                 <p class="text-lg md:text-xl text-stone-600 mt-2 font-serif italic text-center md:text-left max-w-lg leading-snug">
-                    Recortes da Trajetória do Violão em Santa Catarina nas Décadas de 1940 e 1950
+                    Clippings of the Guitar's Trajectory in Santa Catarina in the 1940s and 1950s
                 </p>
             </div>
         </div>
 
         {/* =========================================
-            SEÇÃO 1: DÉCADA DE 40
+            SECTION 1: 1940s
         ========================================== */}
         <div>
             <div class="mb-10 text-center">
@@ -162,14 +162,14 @@ const recortesImprensa = [
                     <span class="hidden md:block h-px flex-1 bg-gradient-to-r from-transparent to-red-700"></span>
                     
                     <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] whitespace-normal md:whitespace-nowrap px-4 border-b-2 border-red-700/30 md:border-0 pb-2 md:pb-0">
-                        Década de 40
+                        1940s
                     </span>
                     
                     <span class="hidden md:block h-px flex-1 bg-gradient-to-l from-transparent to-red-700"></span>
                 </h2>
                 
                 <p class="text-base md:text-lg text-stone-500 font-serif italic mt-4 md:mt-3 max-w-2xl mx-auto px-2">
-                    Notícias, artigos e publicações diversas na mídia impressa catarinense
+                    News, articles, and various publications in the Santa Catarina print media
                 </p>
             </div>
 
@@ -200,7 +200,7 @@ const recortesImprensa = [
                                 {registro.legenda}
                             </p>
                             <p class="text-xs md:text-sm text-stone-500 font-serif italic mt-2">
-                                Fonte: {registro.fonte}
+                                Source: {registro.fonte}
                             </p>
                         </div>
                     </div>
@@ -209,21 +209,21 @@ const recortesImprensa = [
         </div>
 
         {/* =========================================
-            SEÇÃO 2: DÉCADA DE 50
-        ========================================== */}
-        <div class="mt-16">
+            SECTION 2: 1950s
+        ========================================== 
+        {/* <div class="mt-16">
             <div class="mb-10 text-center">
                 <h2 class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-xl md:text-2xl font-semibold text-red-700 font-['Cinzel'] tracking-wide uppercase">
                     <span class="hidden md:block h-px flex-1 bg-gradient-to-r from-transparent to-red-700"></span>
                     
                     <span class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)] whitespace-normal md:whitespace-nowrap px-4 border-b-2 border-red-700/30 md:border-0 pb-2 md:pb-0">
-                        Década de 50
+                        1950s
                     </span>
                     
                     <span class="hidden md:block h-px flex-1 bg-gradient-to-l from-transparent to-red-700"></span>
                 </h2>
                 <p class="text-base md:text-lg text-stone-500 font-serif italic mt-4 md:mt-3 max-w-2xl mx-auto px-2">
-                    Notícias, artigos e publicações diversas na mídia impressa catarinense
+                    News, articles, and various publications in the Santa Catarina print media
                 </p>
             </div>
 
@@ -254,7 +254,7 @@ const recortesImprensa = [
                                 {recorte.legenda}
                             </p>
                             <p class="text-xs md:text-sm text-stone-500 font-serif italic mt-2">
-                                Fonte: {recorte.fonte}
+                                Source: {recorte.fonte}
                             </p>
                         </div>
                     </div>
@@ -262,10 +262,10 @@ const recortesImprensa = [
             </section>
         </div>
 
-    </div>
+    </div> */}
 
     {/* =========================================
-        MODAL (A JANELA QUE ABRE A FOTO GRANDE)
+        MODAL (THE WINDOW THAT OPENS THE LARGE PHOTO)
     ========================================== */}
     <div id="imageModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300 p-4">
         
@@ -287,13 +287,13 @@ const recortesImprensa = [
 
                     <div class="flex items-center gap-3 bg-white/95 backdrop-blur-md p-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.2)] border border-stone-200 transition-all">
                         
-                        <button id="zoomOutBtn" class="w-10 h-10 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-stone-600 rounded-full shadow-inner border border-stone-200 transition-transform active:scale-90" title="Afastar">
+                        <button id="zoomOutBtn" class="w-10 h-10 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-stone-600 rounded-full shadow-inner border border-stone-200 transition-transform active:scale-90" title="Zoom Out">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6" />
                             </svg>
                         </button>
 
-                        <button id="zoomInBtn" class="w-14 h-14 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-red-700 rounded-full shadow-md border border-stone-200 transition-transform active:scale-90" title="Aproximar">
+                        <button id="zoomInBtn" class="w-14 h-14 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-red-700 rounded-full shadow-md border border-stone-200 transition-transform active:scale-90" title="Zoom In">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-7 h-7">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
                             </svg>
@@ -416,7 +416,7 @@ const recortesImprensa = [
             }
             
             if (modalCaption) modalCaption.textContent = legenda;
-            if (modalSource) modalSource.textContent = `Fonte: ${fonte}`;
+            if (modalSource) modalSource.textContent = `Source: ${fonte}`;
 
             modal?.classList.remove('hidden');
             modal?.classList.add('flex');
