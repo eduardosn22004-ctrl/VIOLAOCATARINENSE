@@ -16,22 +16,62 @@ const levino = [
     },
 ];
 
-// 2. DATA: Clippings
+// 2. DATA: Press Clippings
 const recortesImprensa = [
+     {
+        src: '/images/registros/turibio12000.avif',
+        legenda: 'Turíbio Santos with "Violão Brasileiro" show, 2000',
+        fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - May 20, 2000'
+    },
+    {
+        src: '/images/registros/turibio22000.avif',
+        legenda: 'Turíbio Santos, 2000',
+        fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - May 27, 2000'
+    },
+    {
+        src: '/images/registros/turibio32000.avif',
+        legenda: 'Turíbio Santos, 2000',
+        fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - May 27, 2000'
+    },
    {
         src: '/images/registros/luizjaragua.avif',
         legenda: 'Luiz Stelzer, 2001',
         fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - May 19, 2001'
     },
      {
+        src: '/images/registros/kikolou.avif',
+        legenda: 'Kiko Loureiro, 2004',
+        fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - July 10, 2004'
+    },
+     {
         src: '/images/registros/seiscordas.avif',
         legenda: 'Seis Cordas Album Release, 2004',
         fonte: 'Zero SC Newspaper - Florianópolis - November 2004'
+    },
+        {
+        src: '/images/registros/stapajo2.avif',
+        legenda: 'Sebastião Tapajós, 2006',
+        fonte: 'O Município Newspaper - Brusque - June 26, 2006'
+    },
+        {
+        src: '/images/registros/duoborgoze1.avif',
+        legenda: 'Borgomanero-Zenamon Duo, 2006',
+        fonte: 'O Município Newspaper - Brusque - October 13, 2006'
+    },
+    {
+        src: '/images/registros/duoborgoze2.avif',
+        legenda: 'Borgomanero-Zenamon Duo, 2006',
+        fonte: 'O Município Newspaper - Brusque - November 09, 2006'
     },
     {
         src: '/images/registros/stapajo.avif',
         legenda: 'Sebastião Tapajós, 2006',
         fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - December 21, 2006'
+    },
+     {
+        src: '/images/registros/vicenzocorte.avif',
+        legenda: 'Vicenzo Cortese, 2007',
+        fonte: 'O Município Newspaper - Brusque - October 18, 2007'
     },
     {
         src: '/images/registros/sonora.avif',
@@ -39,14 +79,49 @@ const recortesImprensa = [
         fonte: 'O Município Newspaper - Brusque - July 2, 2008'
     },
     {
+        src: '/images/registros/marcusll778.avif',
+        legenda: 'Marcus Llerena, 2008',
+        fonte: 'O Município Newspaper - Brusque - July 7, 2008'
+    },
+     {
+        src: '/images/registros/danielwolf09.avif',
+        legenda: 'Daniel Wolf at Sonora Brasil, 2009',
+        fonte: 'O Município Newspaper - Brusque - May 14, 2009'
+    },
+    {
+        src: '/images/registros/samucal.avif',
+        legenda: 'Samuel Cardeal, 2009',
+        fonte: 'O Município Newspaper - Brusque - July 28, 2009'
+    },
+    {
         src: '/images/registros/jdalmacio.avif',
         legenda: 'Guitar duo, Alessandro Lucindo and Marcos Dalmacio, 2009',
         fonte: 'O Município Newspaper - Brusque - September 9, 2009'
     },
+    {
+        src: '/images/registros/dalmacio09.avif',
+        legenda: 'Marcos Dalmacio, 2009',
+        fonte: 'O Município Newspaper - Brusque - September 23, 2009'
+    },
+    {
+        src: '/images/registros/igorcaba.avif',
+        legenda: 'Igor Issicaba, 2009',
+        fonte: 'O Município Newspaper - Brusque - November 18, 2009'
+    },
+     {
+        src: '/images/registros/marcusll.avif',
+        legenda: 'Marcus Llerena, 2010',
+        fonte: 'Correio do Povo Newspaper - Jaraguá do Sul - June 15, 2010'
+    },
+    {
+        src: '/images/registros/ricardopauletti14.avif',
+        legenda: 'Ricardo Pauletti Trio, 2014',
+        fonte: 'O Município Newspaper - Brusque - March 07, 2014'
+    },
 ];
 ---
 
-<Layout title="Violão Catarinense">
+<Layout title="Santa Catarina Guitar">
     
     <div class="max-w-6xl mx-auto py-16 px-6 space-y-24">
 
@@ -62,7 +137,7 @@ const recortesImprensa = [
                 <stop offset="0%" stop-color="#f5f5f4" />
                 <stop offset="100%" stop-color="#e7e5e4" />
             </linearGradient>
-            {/* Shadow filter to separate the pages */}
+            {/* Shadow filter to separate pages */}
             <filter id="paperShadow" x="-10%" y="-10%" width="120%" height="120%">
                 <feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.3"/>
             </filter>
@@ -111,7 +186,7 @@ const recortesImprensa = [
         </h1>
         
         <p class="text-xl text-stone-600 mt-1 font-serif italic text-left max-w-lg leading-snug">
-            Clippings of the Guitar's Trajectory in Santa Catarina from the 2000s to the present
+            Clippings of the Guitar Trajectory in Santa Catarina from the 2000s to the Present
         </p>
     </div>
 
@@ -131,7 +206,7 @@ const recortesImprensa = [
                     <span class="h-px flex-1 bg-gradient-to-l from-transparent to-red-700"></span>
                 </h2>
                 <p class="text-lg text-stone-500 font-serif italic mt-3 max-w-2xl mx-auto">
-                   Interview with Edino Krieger given to O Município Newspaper
+                   Edino Krieger's interview given to O Município Newspaper
                 </p>
             </div>
 
@@ -269,10 +344,10 @@ const recortesImprensa = [
             {/* IMAGE CONTAINER AND FLOATING CONTROLS */}
             <div class="relative w-full group">
                 
-                {/* Group: Hint + Zoom Controls */}
+                {/* Group: Tooltip + Zoom Controls */}
                 <div class="absolute bottom-6 right-6 z-10 flex flex-col items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     
-                    {/* Keyboard hint only on Desktop, centered above the magnifying glasses */}
+                    {/* Keyboard tooltip only on Desktop, centered above magnifying glasses */}
                     <span class="text-[10px] font-bold text-stone-500 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm border border-stone-200 uppercase tracking-wider hidden md:block select-none">
                         Ctrl + Scroll
                     </span>
@@ -281,14 +356,14 @@ const recortesImprensa = [
                     <div id="zoomControlsContainer" class="flex items-center gap-3 bg-white/95 backdrop-blur-md p-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.2)] border border-stone-200 transition-all">
                         
                         {/* Smaller Magnifying Glass (-) */}
-                        <button id="zoomOutBtn" class="w-10 h-10 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-stone-600 rounded-full shadow-inner border border-stone-200 transition-transform active:scale-90" title="Zoom Out">
+                        <button id="zoomOutBtn" class="w-10 h-10 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-stone-600 rounded-full shadow-inner border border-stone-200 transition-transform active:scale-90" title="Zoom out">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6" />
                             </svg>
                         </button>
 
                         {/* Larger Magnifying Glass (+) */}
-                        <button id="zoomInBtn" class="w-14 h-14 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-red-700 rounded-full shadow-md border border-stone-200 transition-transform active:scale-90" title="Zoom In">
+                        <button id="zoomInBtn" class="w-14 h-14 flex items-center justify-center bg-stone-50 hover:bg-stone-100 text-red-700 rounded-full shadow-md border border-stone-200 transition-transform active:scale-90" title="Zoom in">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-7 h-7">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
                             </svg>
@@ -297,15 +372,15 @@ const recortesImprensa = [
                     </div>
                 </div>
 
-                {/* Scrollable area (Scroll) for the image */}
+                {/* Scrollable area of the image */}
                 <div id="imageWrapper" class="w-full overflow-auto max-h-[70vh] border border-stone-200 bg-stone-50 text-center custom-scrollbar rounded-md shadow-inner">
                     <img 
                         id="modalImage" 
                         src="" 
                         alt="" 
-                        /* We leave the size transition smoother (duration 700ms and ease-in-out) */
+                        /* We make the size transition smoother (duration 700ms and ease-in-out) */
                         class="max-w-none inline-block transition-[height] duration-700 ease-in-out align-top"
-                        /* Reduced initial size (45vh) to better visualize the context when opening */
+                        /* Reduced initial size (45vh) to better view context when opening */
                         style="height: 45vh;"
                     />
                 </div>
@@ -320,7 +395,7 @@ const recortesImprensa = [
 </Layout>
 
 <style>
-    /* Hides the native scrollbar in the cards */
+    /* Hides the native scrollbar on cards */
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
@@ -329,14 +404,14 @@ const recortesImprensa = [
         scrollbar-width: none;  /* Firefox */
     }
 
-    /* Stylized scrollbar for the Reading Modal (Zoom) */
+    /* Stylized scrollbar for Reading Modal (Zoom) */
     .custom-scrollbar::-webkit-scrollbar { width: 10px; height: 10px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #f5f5f4; border-radius: 4px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 4px; }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
 
     /* =========================================
-       NEWSPAPERS ICON SIZE
+        NEWSPAPER ICON SIZE
     ========================================== */
     .newspaper-icon {
         width: 70px;
@@ -383,8 +458,8 @@ const recortesImprensa = [
     // Zoom Variables
     let baseHeight = 45; // Initial height in 'vh' (reduced as requested)
     let currentHeight = baseHeight;
-    const buttonZoomStep = 25; // Jump using the button
-    const scrollZoomStep = 10; // More subtle jump using mouse scroll
+    const buttonZoomStep = 25; // Jump by button
+    const scrollZoomStep = 10; // More subtle jump by mouse scroll
 
     const zoomInBtn = document.getElementById('zoomInBtn');
     const zoomOutBtn = document.getElementById('zoomOutBtn');
@@ -415,7 +490,7 @@ const recortesImprensa = [
     // Scroll Event (Mouse Wheel) for Zoom
     if (imageWrapper) {
         imageWrapper.addEventListener('wheel', (e) => {
-            // Only executes zoom if the user holds Ctrl (or Cmd on Mac)
+            // Only executes zoom if user holds Ctrl (or Cmd on mac)
             // This prevents the person from getting stuck without being able to scroll the page to read
             if (e.ctrlKey || e.metaKey) {
                 e.preventDefault(); // Prevents native browser zoom
@@ -428,7 +503,7 @@ const recortesImprensa = [
                 }
                 applyZoom();
             }
-        }, { passive: false }); // 'passive: false' is required for preventDefault to work
+        }, { passive: false }); // 'passive: false' is mandatory for preventDefault to work
     }
 
     // Open Modal
@@ -440,7 +515,7 @@ const recortesImprensa = [
 
             if (modalImg) {
                 modalImg.src = src || '';
-                // Resets the height whenever a new photo is opened
+                // Resets height whenever opening a new photo
                 currentHeight = baseHeight;
                 applyZoom();
             }
@@ -468,7 +543,7 @@ const recortesImprensa = [
         setTimeout(() => {
             modal?.classList.add('hidden');
             modal?.classList.remove('flex');
-            // For safety, ensures that when closing, the height returns to normal
+            // For safety, ensures that upon closing the height returns to normal
             currentHeight = baseHeight;
             applyZoom();
         }, 300);
