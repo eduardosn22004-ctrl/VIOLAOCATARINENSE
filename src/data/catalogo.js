@@ -501,7 +501,7 @@ export const catalogo = [
       { titulo: "Studies Op. 7 (14 Estudos)", ano: "2009", formacao: "Violão Solo", linkYoutube: "https://youtu.be/rk_w_PLmw_U?si=tK5EHh0McQ4tP-fG" },
       { titulo: "Study Op. 2 (14 Estudos)", ano: "2009", formacao: "Violão Solo", linkYoutube: "https://youtu.be/kUTB-crZ4TE?si=ohSpRa7qa04OoflR" },
       { titulo: "Study Op. 4 (55 Estudos)", ano: "2009", formacao: "Violão Solo", linkYoutube: "https://youtu.be/PqdFRUW4lIY?si=KQbUcFt_aAbW8Iyd" },
-      { titulo: "Terno de Reis Estrela de Capivari", ano: "2007", formacao: "", linkYoutube: "" }
+      { titulo: "Terno de Reis Estrela de Capivari", ano: "2007", formacao: "", linkYoutube: "" },
       { titulo: "TRE: O Guardião da Democracia", ano: "", formacao: "", linkYoutube: "https://youtu.be/EV804gX4ib8?si=N-Tc0Hb2KsdUGWUj" },
       { titulo: "Tremolo (1-16)", ano: "", formacao: "", linkYoutube: "https://youtu.be/kZCprEUGzBo?si=8XJsnKhQXEBP90pD" },
       { titulo: "Tributo ao Rio Capivari de Baixo", ano: "", formacao: "violão, percussao e cordas", linkYoutube: "https://youtu.be/2p3zw_JuZ1s?si=6fdE-ukR8fb8QR3R" },
