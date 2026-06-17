@@ -440,7 +440,7 @@ export const catalogo = [
       { titulo: "Encantamento Artes Ana", ano: "", formacao: "", linkYoutube: "https://youtu.be/tEz9q4qC2NI?si=M7sxIhfd3jDBN7A6" },
       { titulo: "Era Ela Sim!", ano: "", formacao: "", linkYoutube: "https://youtu.be/GvtKtiuEYaE?si=44D5AgOQqXaKE23M" },
       { titulo: "Eternamente Otto e Chininha", ano: "", formacao: "violão, cordas percussão", linkYoutube: "https://youtu.be/RhrdhEBQvpw?si=5ZjQ34LfSHyP_452" },
-      { titulo: "Fantasia sobre Rancho de amor a Ilha, ano: "2009", formacao: "", linkYoutube: "" },
+      { titulo: "Fantasia sobre Rancho de amor a Ilha", ano: "2009", formacao: "", linkYoutube: "" },
       { titulo: "Flor de Tuna", ano: "2009", formacao: "", linkYoutube: "https://youtu.be/hT5LD-DWzmg?si=EaNZ8C0qzhYn2Ddj" },
       { titulo: "Flores que eram Perfumadas", ano: "2000", formacao: "", linkYoutube: "https://youtu.be/A2dps3873ms?si=SnGiDO6swWyoW4IV" },
       { titulo: "Formosas Nuvens", ano: "2009", formacao: "", linkYoutube: "https://youtu.be/Vg7jNHPWK78?si=w071-JQVcECQKz9C" },
