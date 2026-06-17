@@ -368,7 +368,7 @@ export const catalogo = [
     id: "ricardob",
     compositor: "Ricardo Boppre",
     obras: [
-      { titulo: "A Cabocla Voltou Para Capivari de Baixo", ano: "", formacao: "violão, baixo e percussão", linkYoutube: "https://youtu.be/tkSizFmX6Ao?si=xASdERDJ6e5y5FOO" },
+      { titulo: "A Cabocla Voltou Para Capivari de Baixo", ano: "1999", formacao: "violão, baixo e percussão", linkYoutube: "https://youtu.be/tkSizFmX6Ao?si=xASdERDJ6e5y5FOO" },
       { titulo: "A Felicidade te Espera", ano: "", formacao: "", linkYoutube: "https://youtu.be/hw5j2wLiLaw?si=RZXSAhdDchVNCxSo" },
       { titulo: "A Romance for Naples", ano: "", formacao: "", linkYoutube: "https://youtu.be/y0sp-mlI0Zg?si=DEZZroQIWZvlyF0-" },
       { titulo: "A Romance Full of Grace", ano: "", formacao: "", linkYoutube: "https://youtu.be/ZeB1e2dNwYc?si=dBqeuO-pKJ6pIHRV" },
@@ -523,8 +523,8 @@ export const catalogo = [
       { titulo: "Terno de Reis Estrela de Capivari", ano: "2007", formacao: "", linkYoutube: "" },
       { titulo: "TRE: O Guardião da Democracia", ano: "", formacao: "", linkYoutube: "https://youtu.be/EV804gX4ib8?si=N-Tc0Hb2KsdUGWUj" },
       { titulo: "Tremolo (1-11)", ano: "2000", formacao: "", linkYoutube: "https://youtu.be/kZCprEUGzBo?si=8XJsnKhQXEBP90pD" },
-      { titulo: "Tributo ao Rio Capivari de Baixo", ano: "", formacao: "violão, percussao e cordas", linkYoutube: "https://youtu.be/2p3zw_JuZ1s?si=6fdE-ukR8fb8QR3R" },
-      { titulo: "Tributo ao Rio Urubici", ano: "", formacao: "violão, acordeon e bateria", linkYoutube: "https://youtu.be/t4UtS7sgrrM?si=cxvfavKbG7hAm9iF" },
+      { titulo: "Tributo ao Rio Capivari de Baixo", ano: "2008", formacao: "violão, percussao e cordas", linkYoutube: "https://youtu.be/2p3zw_JuZ1s?si=6fdE-ukR8fb8QR3R" },
+      { titulo: "Tributo ao Rio Urubici", ano: "2009", formacao: "violão, acordeon e bateria", linkYoutube: "https://youtu.be/t4UtS7sgrrM?si=cxvfavKbG7hAm9iF" },
       { titulo: "Tributo Ao Velho Rio São Francisco", ano: "2008", formacao: "violão, percussão e cordas", linkYoutube: "https://youtu.be/Sio1Uofd-MI?si=VGtv4CLpasHsRSUx" },
       { titulo: "Tudo é possível para quem crê", ano: "", formacao: "", linkYoutube: "https://youtu.be/o579RHSdaeM?si=R5iswCFrD62-4-LB" },
       { titulo: "Twilight Prelude", ano: "2009", formacao: "", linkYoutube: "" },
@@ -545,7 +545,7 @@ export const catalogo = [
       { titulo: "Valsas (Coletânea de 55 obras)", ano: "2009", formacao: "Violão Solo", linkYoutube: "https://youtu.be/VpibPvCjilk?si=S-jhT7vB15flaMvt" },
       { titulo: "Valsinha", ano: "2009", formacao: "Violão Solo", linkYoutube: "" },
       { titulo: "Valsinha do Arrabalde de Minha Infância" , ano: "", formacao: "Violão Solo", linkYoutube: "https://youtu.be/BT6CM_CnFo8" },
-      { titulo: "Valseado em Urubici", ano: "", formacao: "Violão Solo", linkYoutube: "https://youtu.be/ftu6-5_zIdU?si=0KBfmuV0hqcFPrkU" },
+      { titulo: "Valseado em Urubici", ano: "2009", formacao: "Violão Solo", linkYoutube: "https://youtu.be/ftu6-5_zIdU?si=0KBfmuV0hqcFPrkU" },
       { titulo: "Vim, Vi, e Venci", ano: "", formacao: "violão, cordas e percussão", linkYoutube: "https://youtu.be/YW1WtX304BQ?si=iIRAiA-KrNB9ON_r" },
       { titulo: "Vivaldianinha Nº1 ao Nº5", ano: "2000", formacao: "", linkYoutube: "" },
       { titulo: "Walter tinha razão", ano: "2009", formacao: "Violão Solo", linkYoutube: "https://youtu.be/ikaSUqKf4Sg?list=RDikaSUqKf4Sg" }
