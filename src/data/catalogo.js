@@ -369,7 +369,7 @@ export const catalogo = [
     compositor: "Ricardo Boppre",
     obras: [
       { titulo: "A Cabocla Voltou Para Capivari de Baixo", ano: "1999", formacao: "violão, baixo e percussão", linkYoutube: "https://youtu.be/tkSizFmX6Ao?si=xASdERDJ6e5y5FOO" },
-      { titulo: "A Felicidade te Espera", ano: "", formacao: "", linkYoutube: "https://youtu.be/hw5j2wLiLaw?si=RZXSAhdDchVNCxSo" },
+      { titulo: "A Felicidade te Espera", ano: " 2014", formacao: "", linkYoutube: "https://youtu.be/hw5j2wLiLaw?si=RZXSAhdDchVNCxSo" },
       { titulo: "A Romance for Naples", ano: "", formacao: "", linkYoutube: "https://youtu.be/y0sp-mlI0Zg?si=DEZZroQIWZvlyF0-" },
       { titulo: "A Romance Full of Grace", ano: "", formacao: "", linkYoutube: "https://youtu.be/ZeB1e2dNwYc?si=dBqeuO-pKJ6pIHRV" },
       { titulo: "A Sanfona do Tadeu", ano: "", formacao: "", linkYoutube: "https://youtu.be/0wnABcMrl6M?si=g2wtoTEz-qkavdFL" },
