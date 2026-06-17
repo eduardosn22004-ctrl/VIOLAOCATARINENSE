@@ -544,7 +544,7 @@ export const catalogo = [
       { titulo: "Valsa Serrana", ano: "", formacao: "Duo Violão", linkYoutube: "https://youtu.be/KxkU9473YMg" },
       { titulo: "Valsas (Coletânea de 55 obras)", ano: "2009", formacao: "Violão Solo", linkYoutube: "https://youtu.be/VpibPvCjilk?si=S-jhT7vB15flaMvt" },
       { titulo: "Valsinha", ano: "2009", formacao: "Violão Solo", linkYoutube: "" },
-      { titulo: "Valsinha do Arrabalde de Minha Infância , ano: "", formacao: "Violão Solo", linkYoutube: "https://youtu.be/BT6CM_CnFo8" },
+      { titulo: "Valsinha do Arrabalde de Minha Infância" , ano: "", formacao: "Violão Solo", linkYoutube: "https://youtu.be/BT6CM_CnFo8" },
       { titulo: "Valseado em Urubici", ano: "", formacao: "Violão Solo", linkYoutube: "https://youtu.be/ftu6-5_zIdU?si=0KBfmuV0hqcFPrkU" },
       { titulo: "Vim, Vi, e Venci", ano: "", formacao: "violão, cordas e percussão", linkYoutube: "https://youtu.be/YW1WtX304BQ?si=iIRAiA-KrNB9ON_r" },
       { titulo: "Vivaldianinha Nº1 ao Nº5", ano: "2000", formacao: "", linkYoutube: "" },
