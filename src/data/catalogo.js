@@ -394,7 +394,7 @@ export const catalogo = [
       { titulo: "Brava Gente", ano: "", formacao: "", linkYoutube: "https://youtu.be/qWxVROVU4w0?si=VB-x2JbdOQV85p9w" },
       { titulo: "Brisas do Paraíso", ano: "1998", formacao: "violão e cordas", linkYoutube: "https://youtu.be/Xl1D28qQIOM?si=qKXxFsw4ZqTZK7Oy" },
       { titulo: "Caixinha de Musica", ano: "", formacao: "", linkYoutube: "https://youtu.be/CmeN2QL0zE0?si=tXBziJGs0FVwgBJT" },
-      { titulo: "canção 18", ano: "2009", formacao: "", linkYoutube: "" },
+      { titulo: "Canção nº18", ano: "2009", formacao: "", linkYoutube: "" },
       { titulo: "canção com a sequencia de don't cry for me", ano: "2009", formacao: "", linkYoutube: "" },
       { titulo: "Canção da Esperança", ano: "2009", formacao: "", linkYoutube: "https://youtu.be/tRhj0ZfadRs?si=H96sQZPLMM-7UpYX" },
       { titulo: "Canção da Solidão", ano: "2009", formacao: "", linkYoutube: "https://youtu.be/tbuW7budV1g?si=6OnwepRUO-qTETO4" },
