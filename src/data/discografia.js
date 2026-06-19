@@ -33,7 +33,7 @@ export const discografia = [
           },
         ano: "A ser lançado",
         capa: "/images/capa/violaocat3.png",
-        faixas: ["Estudo No.1 - Leandro Rodrigues Fortes", "Suíte Pequeninas - Pablo de Mello Heredia I. Canção de Ninar para Daniel", "II. Polirítmico", "III. Esperancinha", "Impressões Poéticas, 5 Prelúdios para Violão - Marcos Pablo Dalmacio I. Prelúdio No.1 (Sol maior)", "II. Prelúdio No.2 (Si menor)", "III. Prelúdio No.3 (Lá maior)", "IV. Prelúdio No.4 (Dó# menor)", "V. Prelúdio No.5 (Si maior)", "Demônio Alado - André Franzoni Alexandre", "Série de Peças - Leandro de Oliveira Bastos Dois de Novembro", "Cinco de Janeiro", "Reflexões", "Transfiguração", "Tributo a Leo Brower No.2 - Jeasir Silva do Rego"]
+        faixas: ["Estudo No.1 - Leandro Rodrigues Fortes", "Suíte Pequeninas - Pablo de Mello Heredia I. Canção de Ninar para Daniel", "II. Polirrítmico", "III. Esperancinha", "Impressões Poéticas, 5 Prelúdios para Violão - Marcos Pablo Dalmacio I. Prelúdio No.1 (Sol maior)", "II. Prelúdio No.2 (Si menor)", "III. Prelúdio No.3 (Lá maior)", "IV. Prelúdio No.4 (Dó# menor)", "V. Prelúdio No.5 (Si maior)", "Demônio Alado - André Franzoni Alexandre", "Série de Peças - Leandro de Oliveira Bastos: Cinco de Janeiro", "Dois de Novembro", "Reflexões", "Transfiguração", "Tributo a Leo Brower No.2 - Jeasir Silva do Rego"]
       },
     ]
   },
