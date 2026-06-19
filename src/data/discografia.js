@@ -174,6 +174,17 @@ export const discografia = [
         ano: "1985",
         capa: "/images/capa/universoviolao.jpg",
         faixas: ["Carinhoso - Pixinguinha", "Canção Para Luiz Ricardo", "Canção Para Luiz Ricardo - Denise Baptista Boppré", "Aurélio - Luiz Aurélio Baptista", "Gente Humilde - Chico, Garoto, Vinicius", "Luar Do Sertão - Catulo Da Paixão Cearense", "Ave Maria - Gounod, Bach", "Apanhei-Te, Cavaquinho - Ernesto Nazareth", "Brejeiro - Ernesto Nazareth", "Cavatina - Stanley Myers", "Na Baixa Do Sapateiro - Ary Barroso", "Ária Da Quarta Corda - Bach", "Choro Para Denise", "Foi Boto, Sinhá - Waldemar Henrique"]
+      },
+      {
+        id: "dedosecordas",
+        titulo: "Dedos e Cordas",
+          descricao: {
+                    pt: "Violão Solo",
+                    en: "Solo Guitar",
+             },  
+        ano: "1996",
+        capa: "/images/capa/dedosecordas.webp",
+        faixas: [""Prelúdio da Suíte Nº 1 em Sol Maior para Cello, BWV 1007", "Brasileirinho (2 violões) Waldir Azevedo", "Noites Cariocas - Jacob do Bandolim", "Noturno Op. 9, Nº 2 - F. Chopin", "Lua Branca - Chiquinha Gonzaga", "As Rosas não Falam - Cartola", "As Pastorinhas", "Fascinação - F. D. Marchetti", "Ontem ao Luar - Catullo da Paixão Cearense", "Manhã de Carnaval (2 violões) Luiz Bonfá & Antônio Maria", "Canção para Luiz Ricardo - Denise Boppré", "Canção para Ana Carolina - Denise Boppré", "Valsa de uma Cidade (2 violões) Ismael Neto & Antonio Maria""]
       }   
     ]
   },
